@@ -10,7 +10,6 @@ namespace Domain
     public class AppUser : IdentityUser
     {
         public string DisplayName { get; set; }
-        public bool IsMainAccount { get; set; }
         public Company Company { get; set; }
     }
 }

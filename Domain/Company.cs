@@ -14,5 +14,6 @@ namespace Domain
         public virtual ICollection<AppUser> Users { get; set; } = new List<AppUser>();
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
         public virtual ICollection<Status> Statuses { get; set; } = new List<Status>();
+        public bool IsDeleted { get; set; }
     }
 }

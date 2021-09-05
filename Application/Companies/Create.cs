@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Application.Companies
 {
@@ -15,18 +16,17 @@ namespace Application.Companies
     {
         public class Command : IRequest<Result<Unit>>
         {
-            public string Name { get; set; }
-            public string NIP { get; set; }
-            // Temporary
-            public string Username { get; set; }
+            public CompanyDto companyDto { get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
+            private readonly UserManager<AppUser> _userManager;
 
-            public Handler(DataContext context)
+            public Handler(DataContext context, UserManager<AppUser> userManager)
             {
+                _userManager = userManager;
                 _context = context;
             }
 
@@ -34,13 +34,24 @@ namespace Application.Companies
             {
                 var company = new Company
                 {
-                    Name = request.Name,
-                    NIP = request.NIP,
+                    Name = request.companyDto.Name,
+                    NIP = request.companyDto.NIP,
                 };
 
-                var user = await _context.Users.FindAsync(request.Username);
+                var user = new AppUser
+                {
+                    Email = request.companyDto.Email,
+                    DisplayName = request.companyDto.Email,
+                    UserName = request.companyDto.Email,
+                };
+
+                var isSuccess = await _userManager.CreateAsync(user, request.companyDto.Password);
+
+                if (!isSuccess.Succeeded) return Result<Unit>.Failure("Failed add new user with company");
 
                 company.Users.Add(user);
+
+                await _context.Companies.AddAsync(company);
 
                 var result = await _context.SaveChangesAsync() > 0;
 
