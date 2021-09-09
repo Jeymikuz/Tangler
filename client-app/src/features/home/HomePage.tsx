@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/stores/store";
 import { ErrorMessage, Formik } from "formik";
-import { Button, Form, Header, Label } from "semantic-ui-react";
+import { Button, Form, Grid, Header, Image, Label } from "semantic-ui-react";
 import FTextInput from "../../app/common/form/FTextInput";
 
 export default observer(function HomePage() {
@@ -11,25 +11,41 @@ export default observer(function HomePage() {
 
     return (
         <>
-            <Formik
-                initialValues={{ username: '', password: '', error: null }}
-                onSubmit={(values, { setErrors }) => userStore.login(values).catch(error => setErrors({ error: 'Niepoprawna nazwa użytknownika lub hasło' }))}
-            >
-                {({ handleSubmit, isSubmitting, errors }) => (
-                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <Header as='h2' content='Login test' textAlign='center' color='purple' />
-                        <FTextInput name='username' placeholder='Nazwa użytkownika' />
-                        <FTextInput name='password' placeholder='Hasło' type='password' />
-                        <ErrorMessage name='error' render={() => <Label style={{ marginBottom: 10 }} basic color='red' content={errors.error} />} />
-                        <Button loading={isSubmitting} positive content='Zaloguj' type='submit' />
-                    </Form>
-                )}
-            </Formik>
-
-            <h1>HomePage</h1>
-            {userStore.user && (
-                <h1>Displayname: {userStore.user.displayName}</h1>
-            )}
+            <Grid >
+                <Grid.Row columns={2}> 
+                <Grid.Column>
+                    <Header size='huge' content='
+                        Jedno miejsce do integracji Twojego e-commerce' />                        
+                </Grid.Column>
+                <Grid.Column>
+                    Tutaj bedzię grafika
+                </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={1}>
+                    <Grid.Column>
+                        Ponad 400 intergracji do wykorzystania w Twojej firmie
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={1}>
+                    <Grid.Column>
+                        <Header size='huge' content='Jeden system. Wiele Korzyści' />
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={3} divided>
+                    <Grid.Column>
+                        <h4>Intergracje, których potrzebujesz</h4>
+                        <p>Wybierz z bogatej oferty integracji te, które są potrzebne dla Twojego biznesu. W ramach jednego systemu i abonamentu masz dostęp do popularnych platform marketplace, sklepów, kurierów i systemów księgowych.</p>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <h4>Zarządzanie z jednego miejsca</h4>
+                        <p>Nie musisz logować się do każdego serwisu z osobna. Zarządzaj zamówieniami z wielu źródeł w jednym systemie, z którego wystawisz także faktury, wydrukujesz etykiety i nadasz paczki.</p>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <h4>Pełna kontrola stanów i cen</h4>
+                        <p>Synchronizacja magazynu z kanałami sprzedaży pozwoli Ci zapomnieć o rozbieżnościach ilościowych i cenowych oraz automatycznie zamykać oferty przy zerowym stanie magazynowym.</p>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         </>
     )
 })
