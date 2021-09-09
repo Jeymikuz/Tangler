@@ -5,6 +5,7 @@ import './app/layout/style.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { store, StoreContext } from './app/stores/store';

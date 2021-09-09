@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { history } from "../..";
 import agent from "../api/agent";
 import { User, UserLoginFormValues } from "../models/user";
 import { store } from "./store";
@@ -17,8 +18,20 @@ export default class UserStore{
             runInAction(()=>{
                 this.user = user;
             })
+            history.push('/');
         } catch(error){
-            console.log(error);
+           throw error;
+        }
+    }
+
+    getCurrentUser = async() =>{
+        try{
+            const user = await agent.Account.current();
+            runInAction(()=>{
+                this.user = user;
+            })
+        } catch(error){
+            throw error;
         }
     }
 }

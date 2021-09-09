@@ -88,12 +88,10 @@ namespace API.Controllers
             return CreateUserObject(user);
         }
 
-        [Authorize(Policy ="IsMainAccountPolicy")]
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
-
             return CreateUserObject(user);
         }
 

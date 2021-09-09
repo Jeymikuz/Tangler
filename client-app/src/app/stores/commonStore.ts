@@ -25,13 +25,11 @@ export default class CommonStore{
         this.error = error;
     }
 
-    setToken = (token: string | null) =>{
+    setToken = (token: string | null) => {
         this.token = token;
     }
 
-    setAppLoaded = () =>{
+    setAppLoaded = () => {
         this.appLoaded=true;
     }
-
-
 }
