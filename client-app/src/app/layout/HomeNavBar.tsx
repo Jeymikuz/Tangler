@@ -1,10 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router-dom";
-import { Container, Dropdown, Menu } from "semantic-ui-react";
+import { Container, Dropdown, Icon, Menu } from "semantic-ui-react";
+import { useStore } from "../stores/store";
 
 
 export default observer(function HomeNavBar() {
+
+    const { userStore } = useStore();
+
     return (
         <>
             <Menu inverted fixed='top' className='HomeNavBar' >
@@ -19,7 +23,13 @@ export default observer(function HomeNavBar() {
                     <Menu.Item as={NavLink} to='/intergracje' >Integracje</Menu.Item>
                     <Menu.Item as={NavLink} to='/kontakt' >Kontakt</Menu.Item>
                     <Menu.Item as={NavLink} to='/pomoc' >Pomoc</Menu.Item>
-                    <Menu.Item position='right' as={NavLink} to='/logowanie' >Zaloguj się</Menu.Item>
+                    {userStore.user ? (
+                        <Menu.Item position='right' as={NavLink} to='/dashboard' ><Icon name='user' /> Przejdź do panelu - {userStore.user.displayName}</Menu.Item>
+                    )
+                        :
+                        (
+                            <Menu.Item position='right' as={NavLink} to='/logowanie' >Zaloguj się</Menu.Item>
+                        )}
                 </Container>
             </Menu>
         </>

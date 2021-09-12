@@ -15,10 +15,6 @@ export default observer(function UserLogin() {
         password: Yup.string().required('Należy podać hasło')
     })
 
-    useEffect(() => {
-        if (userStore.user) history.push('/panel');
-    }, [userStore])
-
     return (
         <Grid textAlign='center' style={{ marginTop: '50%' }}>
             <Segment compact >

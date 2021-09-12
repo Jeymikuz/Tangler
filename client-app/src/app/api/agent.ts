@@ -22,11 +22,14 @@ axios.interceptors.response.use(async response =>{
 
     return response;
 },(error: AxiosError) =>{
-    const {data,status} = error.response!;
+    if(!error.response){
+        console.log("Connection error");
+        return Promise.reject(error);
+    }
+    const {status} = error.response!;
 
     switch(status){
         case 400:
-            console.log(data.errors);
             break;
         case 401:
             console.log('unauthorise');
