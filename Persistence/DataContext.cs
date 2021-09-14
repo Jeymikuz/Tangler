@@ -18,6 +18,6 @@ namespace Persistence
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<OrderProduct> Products { get; set; }
     }
 }

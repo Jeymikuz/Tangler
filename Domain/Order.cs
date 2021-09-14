@@ -18,7 +18,7 @@ namespace Domain
         public string DeliveryMethod { get; set; }
         public Address DeliveryAddress { get; set; }
         public Address InvoiceAddress { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<OrderProduct> Products { get; set; }
         public string ClientMessage { get; set; }
         public Status Status { get; set; }
     }
