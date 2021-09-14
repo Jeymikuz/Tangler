@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Application.Dtos;
 
 namespace Application.Companies
 {
@@ -34,18 +35,18 @@ namespace Application.Companies
             {
                 var company = new Company
                 {
-                    Name = request.companyDto.Name,
-                    NIP = request.companyDto.NIP,
+                    Name = request.companyDto.name,
+                    NIP = request.companyDto.nip,
                 };
 
                 var user = new AppUser
                 {
-                    Email = request.companyDto.Email,
-                    DisplayName = request.companyDto.Email,
-                    UserName = request.companyDto.Email,
+                    Email = request.companyDto.email,
+                    DisplayName = request.companyDto.email,
+                    UserName = request.companyDto.email,
                 };
 
-                var isSuccess = await _userManager.CreateAsync(user, request.companyDto.Password);
+                var isSuccess = await _userManager.CreateAsync(user, request.companyDto.password);
 
                 if (!isSuccess.Succeeded) return Result<Unit>.Failure("Failed add new user with company");
 
