@@ -21,5 +21,11 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new Detailes.Query { Id = id }));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> OrdersList([FromQuery]int statusid)
+        {
+            return HandleResult(await Mediator.Send(new OrdersList.Query { Id = statusid }));
+        }
     }
 }
