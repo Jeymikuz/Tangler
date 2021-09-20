@@ -8,7 +8,40 @@
     font-size: 20px;
 }
 
-.dashboard-container{
-    margin-top: 3em !important;
-    margin-left: 18em !important;
+.container__dashboard {
+    height: 100%;
+    display: flex;
+}
+
+.container__sidebar {
+    width: 18rem;
+    overflow: auto;
+}
+
+.container__main {
+    /* Take the remaining width */
+    flex: 1;
+    /* Make it scrollable */
+    overflow: auto;
+}
+
+.sidebar__stick {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #1B1C1D;
+    overflow-x: hidden;
+    padding-top: 42px;
+}
+
+.statuses__menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 1;
+    overflow-x: hidden;
+    padding-top: 42px;
 }

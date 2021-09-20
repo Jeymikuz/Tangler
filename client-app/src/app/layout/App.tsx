@@ -4,11 +4,13 @@ import { Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Container, Segment } from 'semantic-ui-react';
 import HomeDashboardPage from '../../features/dashboard/HomeDashboardPage';
+import OrderDetails from '../../features/dashboard/orderDetails/OrderDetails';
 import Orders from '../../features/dashboard/orders/Orders';
 import HomePage from '../../features/home/HomePage';
 import UserLogin from '../../features/user/UserLogin';
 import { useStore } from '../stores/store';
 import DashboardNavbar from './DashboardNavbar';
+import DashboardSidebar from './DashboardSidebar';
 import HomeNavBar from './HomeNavBar';
 import LoaderComponent from './LoaderComponent';
 import PrivateRoute from './PrivateRoute';
@@ -47,10 +49,15 @@ function App() {
         render={() => (
           <>
             <DashboardNavbar />
-            <Segment attached className='dashboard-container'>
-              <PrivateRoute exact path='/dashboard' component={HomeDashboardPage} />
-              <PrivateRoute exact path='/dashboard/zamowienia' component={Orders} />
-            </Segment>
+            <div className='container__dashboard' style={{ marginTop: 43 }}>
+              <DashboardSidebar />
+              <Segment className='container__main' style={{ margin: 0, padding: 0 }} >
+                <PrivateRoute exact path='/dashboard' component={HomeDashboardPage} />
+                <PrivateRoute exact path='/dashboard/zamowienia' component={Orders} />
+                <PrivateRoute exact path='/dashboard/zamowienia/:id' component={OrderDetails} />
+              </Segment>
+            </div>
+
           </>
         )
         }

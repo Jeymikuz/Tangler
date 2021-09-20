@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
+import { Order } from '../models/order';
 import { User, UserLoginFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -59,8 +60,14 @@ const Account ={
     login: (user: UserLoginFormValues) => request.post<User>('/account/login',user),
 }
 
+const Orders = {
+    list: (params: URLSearchParams) => axios.get<Order[]>('/orders',{params: params}).then(responseBody),
+    details: (id: number) => request.get<Order>(`/orders/${id}`),
+}
+
 const agent = {
-    Account
+    Account,
+    Orders
 }
 
 export default agent;
