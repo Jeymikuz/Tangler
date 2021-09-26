@@ -1,26 +1,54 @@
-import axios from "axios";
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, reaction, runInAction } from "mobx";
 import agent from "../api/agent";
 import {Order} from '../models/order';
+import { Status } from "../models/status";
 
 
 export default class OrdersStore{
     orderRegistry = new Map<number,Order>();
+    statuses: Status[] | undefined = undefined;
+    selectedStatus: Status | undefined = undefined;
     selectedOrder: Order | undefined = undefined;
     loading = false;
     statusId = 0;
+    statusEditModal = false; 
 
     constructor(){
         makeAutoObservable(this);
+
+        reaction(
+            () => this.statusId,
+            () => {
+                this.loadOrders();
+            }
+        )
     }
 
-    setStatusId = (id: number) => {
-        this.statusId=id;
+    editStatus = async(status: Status) => {
+        this.setLoading(true);
+        try{
+            let editedStatus = await agent.Statuses.edit(status);
+            if(this.statuses){
+                var index = this.statuses?.indexOf(status);
+                this.statuses[index] = editedStatus;
+                this.setStatusId(editedStatus.id);
+            }
+
+        } catch(error){
+
+        }
+    }
+
+    setEditStatusModal = (isOpen: boolean) =>{
+        this.statusEditModal = isOpen;
     }
 
     loadOrders = async () =>{
-        this.setLoading(true);       
-        try{
+        runInAction(()=>{
+            this.setLoading(true);       
+            this.orderRegistry.clear();
+        })
+        try{            
             const params = new URLSearchParams();
             params.append('statusid',this.statusId.toString());
 
@@ -29,11 +57,19 @@ export default class OrdersStore{
                 result.forEach(order=>{
                     this.orderRegistry.set(order.id,order);
                 })
+                this.setLoading(false);
             })
         } catch (error){
             console.log(error);
             this.setLoading(false);
         }
+    }
+
+    setStatusId = (id: number) => {
+        runInAction(()=>{
+            this.statusId = id;
+            this.selectedStatus = this.statuses?.find(x=>x.id == id);
+        })
     }
 
     setLoading = (isLoading: boolean) =>{
@@ -57,12 +93,15 @@ export default class OrdersStore{
         try{
         if(order){
             this.setOrder(order);
+            this.setStatusId(parseInt(order.statusId));
             this.setLoading(false);
            
             return order;
         } else {
             order = await agent.Orders.details(id);
             this.setOrder(order);
+            if(!this.statuses) await this.loadStatuses();
+            this.setStatusId(parseInt(order.statusId));
             this.setLoading(false);
         }
         } catch(error) {
@@ -75,4 +114,15 @@ export default class OrdersStore{
         this.selectedOrder = undefined;
     }
 
+    loadStatuses = async()=>{
+        try{
+        this.setLoading(true);
+        this.statuses = await agent.Statuses.list();
+
+
+        } catch(error) {
+            console.log(error);
+            this.setLoading(false);
+        }
+    }
 }

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { Button, Header, Icon, Segment, Transition } from "semantic-ui-react";
+import { Button, Header, Icon, Label, Segment, Transition } from "semantic-ui-react";
 import { number } from "yup/lib/locale";
 import { history } from "../../..";
 import LoaderComponent from "../../../app/layout/LoaderComponent";
@@ -17,10 +17,11 @@ export default observer(function OrderDetails() {
 
     useEffect(() => {
         if (id) loadOrder(parseInt(id));
+
         return () => {
             cleareSelectedOrder();
         }
-    }, [cleareSelectedOrder, loadOrder])
+    }, [cleareSelectedOrder, loadOrder, ordersStore])
 
     function returnToList() {
         history.goBack();
@@ -37,8 +38,15 @@ export default observer(function OrderDetails() {
                 <Icon name='reply' />
                 Cofnij
             </Button>
-            <Header style={{ margin: 50, marginBottom: 5, marginTop: 35 }}>
+
+            <Header
+                style={{ margin: 50, marginBottom: 5, marginTop: 35 }}>
                 Zamówienie {order.id}
+                <Label
+                    tag
+                    style={{ backgroundColor: ordersStore.selectedStatus?.color, color: 'white', marginLeft: '1.3rem' }} >
+                    {ordersStore.selectedStatus?.name}
+                </Label>
                 <Header.Subheader>
                     10.10.2021 15:45
                 </Header.Subheader>

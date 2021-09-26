@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Dropdown, Grid, Label, Menu } from "semantic-ui-react";
 import LoaderComponent from "../../../app/layout/LoaderComponent";
 import { useStore } from "../../../app/stores/store";
@@ -9,9 +9,10 @@ import OrdersList from "./OrdersList";
 export default observer(function Orders() {
 
     const { ordersStore } = useStore();
+    const { statuses, setStatusId } = ordersStore;
 
     useEffect(() => {
-        ordersStore.loadOrders();
+        if (!statuses) ordersStore.loadStatuses();
     }, [ordersStore])
 
     return (
@@ -24,21 +25,22 @@ export default observer(function Orders() {
                     <Menu.Item>
                         <Menu.Header>Statusy Zamówień</Menu.Header>
                     </Menu.Item>
-                    <Menu.Item name='all-orders' ><Label color='teal'>{ordersStore.listOfOrders.length}</Label>Wszystkie Zamówienia  </Menu.Item>
-                    <Menu.Item>
-                        <Dropdown compact text='Nowe' wrapSelection>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>Zamowienia sklep</Dropdown.Item>
-                                <Dropdown.Item>Zamowienia allegro</Dropdown.Item>
-                                <Dropdown.Item>Zamowienia ebay</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Menu.Item>
+                    <Menu.Item name='all-orders' onClick={() => setStatusId(0)}>Wszystkie Zamówienia</Menu.Item>
+                    {statuses && statuses.map(status => (
+                        <Menu.Item
+                            onClick={() => setStatusId(status.id)}
+                            key={status.id}>
+                            <Label
+                                style={{ backgroundColor: status.color }}
+                                content='12' />
+                            {status.name}
+                        </Menu.Item>
+                    ))}
                 </Menu>
             </div>
             <div className='container__main' style={{ paddingRight: 20 }}>
                 <OrdersList />
             </div>
-        </div>
+        </div >
     )
 })

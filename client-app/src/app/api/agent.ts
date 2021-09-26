@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { Order } from '../models/order';
+import { Status } from '../models/status';
 import { User, UserLoginFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -65,9 +66,15 @@ const Orders = {
     details: (id: number) => request.get<Order>(`/orders/${id}`),
 }
 
+const Statuses = {
+    list: () => request.get<Status[]>('/statuses'),
+    edit: (status: Status) => request.post<Status>('/statuses',status),
+}
+
 const agent = {
     Account,
-    Orders
+    Orders,
+    Statuses
 }
 
 export default agent;

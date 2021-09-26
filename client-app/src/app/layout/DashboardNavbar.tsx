@@ -7,7 +7,7 @@ export default observer(function DashboardNavbar() {
     const { userStore } = useStore();
 
     return (
-        <Menu fixed='top' inverted size='large' style={{ borderRadius: '0px', margin: 0 }}>
+        <Menu className='dashboard__navbar' fixed='top' inverted size='large' style={{ borderRadius: '0px', margin: 0 }}>
             <Menu.Item position='right'>
                 <Menu.Header>
                     <Dropdown text={userStore.user?.displayName}>

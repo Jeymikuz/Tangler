@@ -1,7 +1,7 @@
 .HomeNavBar {
     color: white;
-    background: rgb(0, 255, 175) !important;
-    background: linear-gradient(90deg, rgba(0, 255, 175, 1) 0%, rgba(115, 0, 255, 1) 100%) !important;
+    background: rgb(38, 70, 83);
+    background: linear-gradient(90deg, rgba(38, 70, 83, 1) 0%, rgba(42, 157, 143, 1) 49%, rgba(233, 196, 106, 1) 100%) !important;
 }
 
 .navbar-header {
@@ -23,6 +23,8 @@
     flex: 1;
     /* Make it scrollable */
     overflow: auto;
+    background-color: #F8F8F8 !important;
+    padding: 30px;
 }
 
 .sidebar__stick {
@@ -32,9 +34,10 @@
     top: 0;
     bottom: 0;
     left: 0;
-    background: #1B1C1D;
+    background: rgb(38, 70, 83) !important;
     overflow-x: hidden;
     padding-top: 42px;
+    z-index: 50 !important;
 }
 
 .statuses__menu {
@@ -44,4 +47,9 @@
     left: 1;
     overflow-x: hidden;
     padding-top: 42px;
+}
+
+.dashboard__navbar {
+    background: rgb(27, 52, 61) !important;
+    z-index: 49 !important;
 }

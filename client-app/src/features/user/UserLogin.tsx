@@ -17,8 +17,9 @@ export default observer(function UserLogin() {
 
     return (
         <Grid textAlign='center' style={{ marginTop: '50%' }}>
-            <Segment compact >
+            <Segment className='login-segment' compact raised>
                 <Formik
+
                     initialValues={{ username: '', password: '', error: null }}
                     onSubmit={(values, { setErrors }) => userStore.login(values).catch(error => {
                         setErrors({ error: 'Nie poprawna nazwa użytknownika lub hasło' })
@@ -26,12 +27,12 @@ export default observer(function UserLogin() {
                     validationSchema={validationSchema}
                 >
                     {({ handleSubmit, isSubmitting, errors }) => (
-                        <Form className='ui form' onSubmit={handleSubmit} autoComplete='off' style={{ padding: 30 }}>
+                        <Form className='ui form login-segment' onSubmit={handleSubmit} autoComplete='off' style={{ padding: 30 }}>
                             <Header as='h2' content='Zaloguj się do panelu' textAlign='center' />
                             <FTextInput name='username' placeholder='Nazwa użytkownika' />
                             <FTextInput name='password' placeholder='Hasło' type='password' />
                             <ErrorMessage name='error' render={() => <Label style={{ marginBottom: 10 }} basic color='red' content={errors.error} />} />
-                            <Button loading={isSubmitting} positive content='Zaloguj' type='submit' />
+                            <Button loading={isSubmitting} fluid positive content='Zaloguj' type='submit' />
                         </Form>
                     )}
                 </Formik>

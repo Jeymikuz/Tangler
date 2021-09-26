@@ -25,7 +25,7 @@ export default observer(function OrderProducts({ order }: Props) {
 
             <Table.Body>
                 {order.products.map(product => (
-                    <Table.Row>
+                    <Table.Row key={product.id} >
                         <Table.Cell width='1' textAlign='center' >
                             <Icon name='box' />
                         </Table.Cell>
