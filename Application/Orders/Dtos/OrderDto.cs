@@ -1,12 +1,6 @@
-﻿using Application.Companies;
-using Application.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Application.Dtos
+namespace Application.Orders.Dtos
 {
     public record OrderDto(
         int id,
@@ -17,8 +11,8 @@ namespace Application.Dtos
         string email,
         string paymentMethod,
         string deliveryMethod,
-        AddressDto DeliveryAddress,
-        AddressDto InvoiceAddress,
+        OrderAddressDto DeliveryAddress,
+        OrderAddressDto InvoiceAddress,
         ICollection<OrderProductDto> products,
         string clientMessage,
         string statusId

@@ -1,4 +1,5 @@
 ﻿using Application.Companies;
+using Application.Companies.Create;
 using Application.Core;
 using Application.Interfaces;
 using Infrastructure.Security;
@@ -40,7 +41,7 @@ namespace API.Extensions
 
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
-            services.AddMediatR(typeof(Create.Handler).Assembly);
+            services.AddMediatR(typeof(CreateHandler).Assembly);
 
             return services;
         }

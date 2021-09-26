@@ -1,8 +1,7 @@
-﻿using Application.Statuses;
+﻿using Application.Statuses.Create;
+using Application.Statuses.Edit;
+using Application.Statuses.List;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -12,7 +11,19 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStatuses()
         {
-            return HandleResult(await Mediator.Send(new List.Query()));
+            return HandleResult(await Mediator.Send(new ListQuery()));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateStatus(CreateCommand command)
+        {
+            return HandleResult(await Mediator.Send(command));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> EditStatus(EditCommand command)
+        {
+            return HandleResult(await Mediator.Send(command));
         }
     }
 }

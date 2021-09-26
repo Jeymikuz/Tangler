@@ -1,12 +1,6 @@
-﻿using Application.Dtos;
-using Application.Orders;
+﻿using Application.Orders.Dtos;
 using AutoMapper;
 using Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Core
 {
@@ -17,8 +11,8 @@ namespace Application.Core
             CreateMap<OrderProductDto, OrderProduct>();
             CreateMap<OrderProduct,OrderProductDto>();
 
-            CreateMap<Address, AddressDto>();
-            CreateMap<AddressDto,Address>();
+            CreateMap<Address, OrderAddressDto>();
+            CreateMap<OrderAddressDto,Address>();
 
             CreateMap<OrderDto, Order>()
                 .ForMember(x => x.Status, a => a.Ignore());

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using FluentValidation.AspNetCore;
-using Application.Companies;
+using Application.Companies.Delete;
 
 namespace API
 {
@@ -37,7 +37,7 @@ namespace API
                 opt.Filters.Add(new AuthorizeFilter(policy));
             }).AddFluentValidation(config =>
             {
-                config.RegisterValidatorsFromAssemblyContaining<Delete>();
+                config.RegisterValidatorsFromAssemblyContaining<DeleteCommand>();
             });
 
             services.AddApplicationServices(Configuration);

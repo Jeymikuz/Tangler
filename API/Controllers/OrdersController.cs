@@ -1,9 +1,8 @@
-﻿using Application.Dtos;
-using Application.Orders;
+﻿using Application.Orders.Create;
+using Application.Orders.Detailes;
+using Application.Orders.Dtos;
+using Application.Orders.List;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -13,19 +12,19 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder(OrderDto orderDto)
         {
-            return HandleResult(await Mediator.Send(new Create.Command { orderDto=orderDto}));
+            return HandleResult(await Mediator.Send(new CreateCommand { orderDto=orderDto}));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> OrderDetailes(int id)
         {
-            return HandleResult(await Mediator.Send(new Detailes.Query { Id = id }));
+            return HandleResult(await Mediator.Send(new DetailesQuery { Id = id }));
         }
 
         [HttpGet]
         public async Task<IActionResult> OrdersList([FromQuery]int statusid)
         {
-            return HandleResult(await Mediator.Send(new OrdersList.Query { Id = statusid }));
+            return HandleResult(await Mediator.Send(new ListQuery { Id = statusid }));
         }
     }
 }
