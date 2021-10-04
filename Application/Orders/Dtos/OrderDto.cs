@@ -11,6 +11,7 @@ namespace Application.Orders.Dtos
         string email,
         string paymentMethod,
         string deliveryMethod,
+        decimal deliveryPrice,
         OrderAddressDto DeliveryAddress,
         OrderAddressDto InvoiceAddress,
         ICollection<OrderProductDto> products,

@@ -6,6 +6,8 @@
         string description,
         string sku,
         string ean,
-        int quantity
+        int quantity,
+        decimal price,
+        double weight
         );
 }

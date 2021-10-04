@@ -1,6 +1,7 @@
 ﻿using Application.Orders.Dtos;
 using AutoMapper;
 using Domain;
+using Persistence;
 
 namespace Application.Core
 {

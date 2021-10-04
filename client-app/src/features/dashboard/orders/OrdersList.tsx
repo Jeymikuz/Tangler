@@ -31,6 +31,7 @@ export default observer(function OrdersList() {
                         <Table.HeaderCell width='2'>Imię i Nazwisko</Table.HeaderCell>
                         <Table.HeaderCell width='11' >Produkty</Table.HeaderCell>
                         <Table.HeaderCell width='1'>Dostawa</Table.HeaderCell>
+                        <Table.HeaderCell width='2'>Informacje</Table.HeaderCell>
                     </Table.Row>
 
                 </Table.Header>
@@ -55,6 +56,11 @@ export default observer(function OrdersList() {
                                 </Table.Cell>
                                 <Table.Cell collapsing>
                                     {order.deliveryMethod}
+                                    <Label>
+                                        {order.deliveryPrice}                                      
+                                    </Label>
+                                </Table.Cell>
+                                <Table.Cell collapsing>
                                 </Table.Cell>
                             </Table.Row>
                         ))}

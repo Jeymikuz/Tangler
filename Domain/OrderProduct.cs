@@ -14,5 +14,7 @@ namespace Domain
         public string SKU { get; set; }
         public string EAN { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public double Weight { get; set; }
     }
 }

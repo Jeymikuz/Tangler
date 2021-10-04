@@ -5,4 +5,6 @@ export interface OrderProduct{
     sku: string;
     ean: string;
     quantity: string;
+    weight: number,
+    price: number
 }

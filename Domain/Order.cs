@@ -16,6 +16,7 @@ namespace Domain
         public string Email { get; set; }
         public string PaymentMethod { get; set; }
         public string DeliveryMethod { get; set; }
+        public decimal DeliveryPrice { get; set; }
         public Address DeliveryAddress { get; set; }
         public Address InvoiceAddress { get; set; }
         public virtual ICollection<OrderProduct> Products { get; set; }

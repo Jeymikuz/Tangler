@@ -1,6 +1,7 @@
 ﻿using Application.Orders.Create;
 using Application.Orders.Detailes;
 using Application.Orders.Dtos;
+using Application.Orders.Edit;
 using Application.Orders.List;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace API.Controllers
         public async Task<IActionResult> OrdersList([FromQuery]int statusid)
         {
             return HandleResult(await Mediator.Send(new ListQuery { Id = statusid }));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> EditOrder(OrderDto order)
+        {
+            return HandleResult(await Mediator.Send(new EditCommand { Order = order}));
         }
     }
 }

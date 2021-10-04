@@ -11,6 +11,7 @@ export interface Order{
     paymentMethod: string | undefined;
     deliveryMethod: string | undefined;
     deliveryAddress: Address | undefined;
+    deliveryPrice: number | undefined;
     invoiceAddress: Address | undefined;
     products: OrderProduct[] | undefined;
     clientMessage: string | undefined;
