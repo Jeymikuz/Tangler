@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
-import { Order } from '../models/order';
+import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
 import { User, UserLoginFormValues } from '../models/user';
 import { store } from '../stores/store';
@@ -64,6 +64,7 @@ const Account ={
 const Orders = {
     list: (params: URLSearchParams) => axios.get<Order[]>('/orders',{params: params}).then(responseBody),
     details: (id: number) => request.get<Order>(`/orders/${id}`),
+    add:(order: NewOrder) => request.post<Order>('/orders',order),
 }
 
 const Statuses = {

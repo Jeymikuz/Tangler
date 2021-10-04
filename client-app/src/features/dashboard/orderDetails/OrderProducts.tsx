@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Dropdown, Icon, Tab, Table } from "semantic-ui-react";
+import { Dropdown, Icon, Table } from "semantic-ui-react";
 import { Order } from "../../../app/models/order";
 
 interface Props {
@@ -24,7 +24,7 @@ export default observer(function OrderProducts({ order }: Props) {
             </Table.Header>
 
             <Table.Body>
-                {order.products.map(product => (
+                {order.products && order.products.map(product => (
                     <Table.Row key={product.id} >
                         <Table.Cell width='1' textAlign='center' >
                             <Icon name='box' />
@@ -56,7 +56,8 @@ export default observer(function OrderProducts({ order }: Props) {
                             </Dropdown>
                         </Table.Cell>
                     </Table.Row>
-                ))}
+                )
+                )}
             </Table.Body>
         </Table>
     )

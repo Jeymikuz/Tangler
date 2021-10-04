@@ -3,16 +3,25 @@ import { OrderProduct } from "./orderProduct";
 
 export interface Order{
     id:number;
-    clientLogin: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    email:string;
-    paymentMethod: string;
-    deliveryMethod: string;
-    deliveryAddress: Address;
-    invoiceAddress: Address;
-    products: OrderProduct[];
-    clientMessage: string;
-    statusId: string;
+    clientLogin: string | undefined;
+    firstName: string | undefined;
+    lastName: string | undefined;
+    phoneNumber: string | undefined;
+    email:string | undefined;
+    paymentMethod: string | undefined;
+    deliveryMethod: string | undefined;
+    deliveryAddress: Address | undefined;
+    invoiceAddress: Address | undefined;
+    products: OrderProduct[] | undefined;
+    clientMessage: string | undefined;
+    statusId: string | undefined;
+}
+
+export interface NewOrder{
+    clientLogin: string| undefined;
+    firstName: string | undefined;
+    lastName: string | undefined;
+    phoneNumber: string | undefined;
+    email: string | undefined;
+    statusId: number
 }

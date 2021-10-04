@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Header, Label, Tab, Table } from "semantic-ui-react";
+import { Header, Label, Table } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import StatusModal from "../statuses/StatusModal";
 import OrderListPlaceholder from "./OrderListPlaceholder";
@@ -12,12 +12,12 @@ export default observer(function OrdersList() {
 
     useEffect(() => {
         ordersStore.loadOrders();
-    }, [])
+    }, [ordersStore])
 
     return (
         <>
             <Header>
-                {ordersStore.selectedStatus?.id == 0 || !ordersStore.selectedStatus ? (
+                {ordersStore.selectedStatus?.id === 0 || !ordersStore.selectedStatus ? (
                     <Label style={{ backgroundColor: '#fbbd08', color: 'white' }} >Wszystkie Zamówienia</Label>
                 ) : (
                     <StatusModal component={<Label style={{ backgroundColor: ordersStore.selectedStatus?.color, color: 'white' }} >{ordersStore.selectedStatus?.name}</Label>} />
@@ -47,7 +47,7 @@ export default observer(function OrdersList() {
                                     {order.firstName} {order.lastName}
                                 </Table.Cell>
                                 <Table.Cell>
-                                    {order.products.map(product => (
+                                    {order.products && order.products.map(product => (
                                         <div key={product.id} >
                                             {product.name} <Label tag> x {product.quantity} </Label>
                                         </div>

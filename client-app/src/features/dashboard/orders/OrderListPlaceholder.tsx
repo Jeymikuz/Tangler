@@ -1,5 +1,5 @@
 import React from "react";
-import { Placeholder, PlaceholderLine, Table } from "semantic-ui-react";
+import { Placeholder, Table } from "semantic-ui-react";
 
 export default function OrderListPlaceholder() {
 

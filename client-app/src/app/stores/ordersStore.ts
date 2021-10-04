@@ -1,6 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
+import { history } from "../..";
 import agent from "../api/agent";
-import {Order} from '../models/order';
+import {NewOrder, Order} from '../models/order';
 import { Status } from "../models/status";
 
 
@@ -12,6 +13,7 @@ export default class OrdersStore{
     loading = false;
     statusId = 0;
     statusEditModal = false; 
+    addOrderModal = false;
 
     constructor(){
         makeAutoObservable(this);
@@ -24,6 +26,24 @@ export default class OrdersStore{
         )
     }
 
+    addOrder = async (order: NewOrder) =>{
+        try{
+            this.setLoading(true);
+            const result = await agent.Orders.add(order);
+            this.orderRegistry.set(result.id,result);
+            this.selectedOrder = result;
+            history.push(`/dashboard/zamowienia/${result.id}`);
+            this.setLoading(false);
+        } catch(error) {
+            this.setLoading(false);
+            console.log(error);
+        }
+    }
+
+    setAddOrderModal = (isOpen: boolean) => {
+        this.addOrderModal = isOpen;
+    }   
+
     editStatus = async(status: Status) => {
         this.setLoading(true);
         try{
@@ -35,7 +55,7 @@ export default class OrdersStore{
             }
 
         } catch(error){
-
+            console.log(error);
         }
     }
 
@@ -68,7 +88,7 @@ export default class OrdersStore{
     setStatusId = (id: number) => {
         runInAction(()=>{
             this.statusId = id;
-            this.selectedStatus = this.statuses?.find(x=>x.id == id);
+            this.selectedStatus = this.statuses?.find(x=>x.id === id);
         })
     }
 
@@ -93,7 +113,7 @@ export default class OrdersStore{
         try{
         if(order){
             this.setOrder(order);
-            this.setStatusId(parseInt(order.statusId));
+            this.setStatusId(parseInt(order.statusId!));
             this.setLoading(false);
            
             return order;
@@ -101,7 +121,7 @@ export default class OrdersStore{
             order = await agent.Orders.details(id);
             this.setOrder(order);
             if(!this.statuses) await this.loadStatuses();
-            this.setStatusId(parseInt(order.statusId));
+            this.setStatusId(parseInt(order.statusId!));
             this.setLoading(false);
         }
         } catch(error) {

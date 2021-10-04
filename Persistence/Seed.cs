@@ -15,36 +15,36 @@ namespace Persistence
         {
             if (!userManager.Users.Any())
             {
-                var user = new AppUser()
+                var userAdmin = new AppUser()
                 {
                     DisplayName = "Peter Parker",
                     UserName = "admin",
                     Email = "admin@tangler.com",
                 };
 
-                await userManager.CreateAsync(user, "Password");
-                await userManager.AddClaimAsync(user, new Claim("IsMain", "true"));
+                await userManager.CreateAsync(userAdmin, "Password");
+                await userManager.AddClaimAsync(userAdmin, new Claim("IsMain", "true"));
 
-                var status = new Status
+                var status1 = new Status
                 {
                     Name = "Nowe Zamówienia",
-                    Color = "#FFFFFF"
+                    Color = "#29D2A6"
                 };
 
-                var company = new Company
+                var company1 = new Company
                 {
-                    Name = "Guardians of the Galaxy",
+                    Name = "Avengers",
                     NIP = "1234567890",
                     IsDeleted = false
                 };
 
-                company.Statuses.Add(status);
-                company.Users.Add(user);
+                company1.Statuses.Add(status1);
+                company1.Users.Add(userAdmin);
 
-                context.Companies.Add(company);
+                context.Companies.Add(company1);
                 context.SaveChanges();
 
-                status = company.Statuses.FirstOrDefault();
+                status1 = company1.Statuses.FirstOrDefault();
 
                 var address = new Address
                 {
@@ -76,12 +76,41 @@ namespace Persistence
                     DeliveryAddress = address,
                     InvoiceAddress = address,
                     ClientMessage = "Proszę o szybką wysyłkę :)",
-                    Status = status,
+                    Status = status1,
                     Products = products
                     
                 };
 
-                company.Orders.Add(order);
+                company1.Orders.Add(order);
+
+                var normalUser = new AppUser()
+                {
+                    DisplayName = "Peter Quill",
+                    UserName = "user",
+                    Email = "user@tangler.com",
+                };
+
+                await userManager.CreateAsync(normalUser, "Password");
+                await userManager.AddClaimAsync(normalUser, new Claim("IsMain", "true"));
+
+                var status2 = new Status
+                {
+                    Name = "Nowe Zamówienia",
+                    Color = "#29BED2"
+                };
+
+                var company2 = new Company
+                {
+                    Name = "Guradians of The Galaxy",
+                    NIP = "1234567890",
+                    IsDeleted = false
+                };
+
+                company2.Statuses.Add(status2);
+                company2.Users.Add(normalUser);
+
+                context.Companies.Add(company2);
+
                 context.SaveChanges();
             }
 

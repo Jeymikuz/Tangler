@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { Order } from "../../../app/models/order";
-import { Button, Divider, Grid, GridColumn, Header, Icon, Item, List, Segment } from "semantic-ui-react";
+import { Button, Divider, Grid, Header, Icon, List, Segment } from "semantic-ui-react";
 
 interface Props {
     order: Order;
@@ -83,15 +83,21 @@ export default observer(function OrderInfo({ order }: Props) {
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Adres</List.Description>
-                                                <List.Header>{order.deliveryAddress.street}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.street}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
-                                                <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Miasto</List.Description>
-                                                <List.Header>{order.deliveryAddress.city}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.city}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Kraj</List.Description>
@@ -117,15 +123,21 @@ export default observer(function OrderInfo({ order }: Props) {
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Adres</List.Description>
-                                                <List.Header>{order.deliveryAddress.street}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.street}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
-                                                <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >Miasto</List.Description>
-                                                <List.Header>{order.deliveryAddress.city}</List.Header>
+                                                {order.deliveryAddress && (
+                                                    <List.Header>{order.deliveryAddress.city}</List.Header>
+                                                )}
                                             </List.Item>
                                             <List.Item>
                                                 <List.Description style={descriptionStyle} >NIP</List.Description>

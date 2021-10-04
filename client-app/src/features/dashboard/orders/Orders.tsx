@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
-import React, { useEffect, useState } from "react";
-import { Button, Dropdown, Grid, Label, Menu } from "semantic-ui-react";
-import LoaderComponent from "../../../app/layout/LoaderComponent";
+import React, { useEffect } from "react";
+import { Button, Label, Menu } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import AddOrderModal from "./AddOrderModal";
 import OrdersList from "./OrdersList";
 
 
@@ -13,14 +13,17 @@ export default observer(function Orders() {
 
     useEffect(() => {
         if (!statuses) ordersStore.loadStatuses();
-    }, [ordersStore])
+    }, [statuses, ordersStore])
 
     return (
         <div className='container__dashboard'>
             <div className='container__sidebar' style={{ width: '15rem' }} >
+                <AddOrderModal />
                 <Menu vertical className='statuses__menu' >
                     <Menu.Item>
-                        <Button content='Dodaj zamówienie' icon='plus' circular compact color='yellow' />
+                        <Button content='Dodaj zamówienie' icon='plus' circular compact color='yellow'
+                            onClick={() => ordersStore.setAddOrderModal(true)}
+                        />
                     </Menu.Item>
                     <Menu.Item>
                         <Menu.Header>Statusy Zamówień</Menu.Header>

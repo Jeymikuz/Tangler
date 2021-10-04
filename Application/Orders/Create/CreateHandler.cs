@@ -38,12 +38,9 @@ namespace Application.Orders.Create
 
             order.Status = status;
 
-
-
             companie.Orders.Add(order);
 
             var result = await _context.SaveChangesAsync() > 0;
-
 
             if (result)
             {

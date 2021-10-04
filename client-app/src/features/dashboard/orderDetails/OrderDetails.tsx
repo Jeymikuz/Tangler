@@ -1,10 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { Button, Header, Icon, Label, Segment, Transition } from "semantic-ui-react";
-import { number } from "yup/lib/locale";
+import { Button, Header, Icon, Label, Segment } from "semantic-ui-react";
 import { history } from "../../..";
-import LoaderComponent from "../../../app/layout/LoaderComponent";
 import { useStore } from "../../../app/stores/store";
 import OrderInfo from "./OrderInfo";
 import OrderProducts from "./OrderProducts";
@@ -21,7 +19,7 @@ export default observer(function OrderDetails() {
         return () => {
             cleareSelectedOrder();
         }
-    }, [cleareSelectedOrder, loadOrder, ordersStore])
+    }, [cleareSelectedOrder, loadOrder, ordersStore, id])
 
     function returnToList() {
         history.goBack();
