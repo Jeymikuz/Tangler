@@ -65,11 +65,12 @@ const Orders = {
     list: (params: URLSearchParams) => axios.get<Order[]>('/orders',{params: params}).then(responseBody),
     details: (id: number) => request.get<Order>(`/orders/${id}`),
     add:(order: NewOrder) => request.post<Order>('/orders',order),
+    edit:(order: Order) => request.put<Order>('/orders',order),
 }
 
 const Statuses = {
     list: () => request.get<Status[]>('/statuses'),
-    edit: (status: Status) => request.post<Status>('/statuses',status),
+    edit: (status: Status) => request.put<Status>('/statuses',status),
 }
 
 const agent = {

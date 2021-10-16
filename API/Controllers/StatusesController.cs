@@ -1,6 +1,7 @@
 ﻿using Application.Statuses.Create;
 using Application.Statuses.Edit;
 using Application.Statuses.List;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -21,9 +22,9 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> EditStatus(EditCommand command)
+        public async Task<IActionResult> EditStatus(Status status)
         {
-            return HandleResult(await Mediator.Send(command));
+            return HandleResult(await Mediator.Send(new EditCommand {Status = status}));
         }
     }
 }

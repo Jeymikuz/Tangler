@@ -26,6 +26,19 @@ export default class OrdersStore{
         )
     }
 
+    editOrder = async (order: Order)=>{
+        try{
+            const result = await agent.Orders.edit(order);
+            runInAction(()=>{
+                this.orderRegistry.set(result.id,result);
+                this.selectedOrder = result;
+            })
+            
+        } catch(error){
+            console.log(error);
+        }
+    }
+
     addOrder = async (order: NewOrder) =>{
         try{
             this.setLoading(true);
@@ -49,9 +62,13 @@ export default class OrdersStore{
         try{
             let editedStatus = await agent.Statuses.edit(status);
             if(this.statuses){
-                var index = this.statuses?.indexOf(status);
-                this.statuses[index] = editedStatus;
-                this.setStatusId(editedStatus.id);
+                runInAction(()=>{
+                    var index = this.statuses?.indexOf(this.selectedStatus!); 
+                    console.log(index);
+                    this.statuses![index!] = editedStatus;
+                    this.setStatusId(editedStatus.id);
+                    this.selectedStatus = editedStatus;
+                })            
             }
 
         } catch(error){

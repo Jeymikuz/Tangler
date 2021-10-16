@@ -29,6 +29,11 @@ export default function OrderListPlaceholder() {
                             <Placeholder.Line />
                         </Placeholder>
                     </Table.Cell>
+                    <Table.Cell>
+                        <Placeholder>
+                            <Placeholder.Line />
+                        </Placeholder>
+                    </Table.Cell>
                 </Table.Row>
             ))
             }
