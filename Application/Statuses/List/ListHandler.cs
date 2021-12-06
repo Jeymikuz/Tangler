@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Statuses.List
 {
-    class ListHandler : IRequestHandler<ListQuery, Result<List<Status>>>
+    public class ListHandler : IRequestHandler<ListQuery, Result<List<Status>>>
     {
         private readonly IUserAccessor _userAccessor;
         private readonly DataContext _context;

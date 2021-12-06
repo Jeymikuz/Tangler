@@ -27,7 +27,10 @@ export default observer(function StatusEditForm() {
                     autoComplete='off'
                     style={{ padding: '2rem' }}
                 >
-                    <Header as='h2' content='Edytuj status' textAlign='center' />
+                    <Header as='h2' textAlign='center'>
+                    Edytuj status
+                    <Header sub>ID: {status?.id}</Header>
+                        </Header>
                     <FTextInput name='name' placeholder='Nazwa statusu' />
                     <FColorPickerInput name='color' placeholder='Kolor HEX' type='text' />
                     <Button type='submit' icon='check' loading={isSubmitting} floated='right' color='green' />

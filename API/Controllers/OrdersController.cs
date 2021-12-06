@@ -30,7 +30,7 @@ namespace API.Controllers
 
         [HttpPut]
         public async Task<IActionResult> EditOrder(OrderDto order)
-        {
+         {
             return HandleResult(await Mediator.Send(new EditCommand { Order = order}));
         }
     }

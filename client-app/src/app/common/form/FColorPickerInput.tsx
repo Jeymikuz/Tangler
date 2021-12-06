@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Form, Label } from "semantic-ui-react";
 import { HexColorPicker } from 'react-colorful';
 
@@ -12,11 +12,7 @@ interface Props {
 
 export default function FColorPickerInput(props: Props) {
     const [field, meta, helpers] = useField(props.name);
-    const [selectedColor, setSelectedColor] = useState('');
 
-    useEffect(() => {
-        setSelectedColor(field.value);
-    }, [field, setSelectedColor])
 
     function handleChange(value: any) {
         helpers.setValue(value);

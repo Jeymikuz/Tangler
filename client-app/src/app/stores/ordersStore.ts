@@ -2,6 +2,7 @@ import { makeAutoObservable, reaction, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
 import {NewOrder, Order} from '../models/order';
+import { OrderProduct } from "../models/orderProduct";
 import { Status } from "../models/status";
 
 
@@ -24,6 +25,66 @@ export default class OrdersStore{
                 this.loadOrders();
             }
         )
+    }
+
+    reset = () =>{
+        runInAction(()=>{
+            this.statuses = undefined;
+            this.orderRegistry.clear();
+            this.selectedStatus = undefined;
+            this.selectedOrder = undefined;
+            this.loading = false;
+            this.statusId = 0;
+            this.statusEditModal = false; 
+            this.addOrderModal = false;
+        })
+    }
+
+    addNewProductToOrder = async () =>{
+     const newProduct: OrderProduct = {
+         id: 0,
+         externalId: 0,
+         warehouseId: 0,
+         description: '',
+         ean: '',
+         sku: '',
+         img: '',
+         name: '',
+         price: 0,
+         quantity: '',
+         weight: 0
+     };
+     
+     try{
+         runInAction(()=>{
+             this.selectedOrder?.products?.push(newProduct);
+            })
+            
+            const result = await agent.Orders.edit(this.selectedOrder!);
+            runInAction(()=>{
+                this.orderRegistry.set(result.id,result);
+                this.selectedOrder = result;
+            })
+        }
+        catch (error){
+            console.log(error);
+        }
+
+    }
+
+    editProductOrder = async (product: OrderProduct) =>{
+        try{
+            var index = this.selectedOrder?.products?.findIndex(x=>x.id === product.id);
+            this.selectedOrder!.products![index!] = product;
+            const result = await agent.Orders.edit(this.selectedOrder!);
+            runInAction(()=>{
+                this.orderRegistry.set(result.id,result);
+                this.selectedOrder = result;
+            })
+            
+        } catch(error){
+            console.log(error);
+        }
     }
 
     editOrder = async (order: Order)=>{

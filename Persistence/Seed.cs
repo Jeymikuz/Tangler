@@ -116,5 +116,80 @@ namespace Persistence
 
 
         }
+
+        //public static async Task SeedDataTests(DataContext context)
+        //{
+        //        var userAdmin = new AppUser()
+        //        {
+        //            DisplayName = "Peter Parker",
+        //            UserName = "admin",
+        //            Email = "admin@tangler.com",
+        //        };
+
+        //    context.Users.Add(userAdmin);
+        //    context.SaveChanges();
+                
+        //        var status1 = new Status
+        //        {
+        //            Name = "Nowe Zamówienia",
+        //            Color = "#29D2A6"
+        //        };
+
+        //        var company1 = new Company
+        //        {
+        //            Name = "Avengers",
+        //            NIP = "1234567890",
+        //            IsDeleted = false
+        //        };
+
+        //        company1.Statuses.Add(status1);
+        //        company1.Users.Add(userAdmin);
+
+        //        context.Companies.Add(company1);
+        //        context.SaveChanges();
+
+        //        status1 = company1.Statuses.FirstOrDefault();
+
+        //        var address = new Address
+        //        {
+        //            City = "Wrocław",
+        //            Street = "Legnicka 1234",
+        //            ZipCode = "99-999"
+        //        };
+
+        //        var products = new List<OrderProduct>
+        //        {
+        //            new OrderProduct
+        //            {
+        //                Name="Benatar",
+        //                Description= "",
+        //                EAN = "5982714743285",
+        //                Quantity = 1,
+        //                SKU="S01"
+        //            }
+        //        };
+
+        //        var order = new Order
+        //        {
+        //            FirstName = "Peter",
+        //            LastName = "Quill",
+        //            PhoneNumber = "+48 997 998 999",
+        //            Email = "gotg@gmail.com",
+        //            PaymentMethod = "Przelew Bankowy",
+        //            DeliveryMethod = "Kurier Inpost",
+        //            DeliveryAddress = address,
+        //            InvoiceAddress = address,
+        //            ClientMessage = "Proszę o szybką wysyłkę :)",
+        //            Status = status1,
+        //            Products = products
+
+        //        };
+
+        //        company1.Orders.Add(order);
+
+        //        context.SaveChanges();
+
+
+        //}
     }
 }

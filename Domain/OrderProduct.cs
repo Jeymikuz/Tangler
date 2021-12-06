@@ -9,6 +9,8 @@ namespace Domain
     public class OrderProduct
     {
         public int Id { get; set; }
+        public int WarehouseId { get; set; }
+        public int ExternalId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string SKU { get; set; }
@@ -16,5 +18,6 @@ namespace Domain
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public double Weight { get; set; }
+        public string Img { get; set; }
     }
 }

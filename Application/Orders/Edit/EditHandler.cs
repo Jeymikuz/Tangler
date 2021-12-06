@@ -30,10 +30,23 @@ namespace Application.Orders.Edit
 
         public async Task<Result<OrderDto>> Handle(EditCommand request, CancellationToken cancellationToken)
         {
+            var name = _userAccessor.GetUsername();
+
             var order = await _context.Companies.AsNoTracking().Include(x => x.Orders).ThenInclude(o => o.Products)
                                                     .Include(x => x.Orders).ThenInclude(o => o.InvoiceAddress)
                                                     .Include(x => x.Orders).ThenInclude(o => o.DeliveryAddress)
-                                                    .Include(s => s.Statuses).Select(y=>y.Orders.FirstOrDefault(x=>x.Id == request.Order.id && y.Users.Any(u=>u.UserName == _userAccessor.GetUsername()))).FirstOrDefaultAsync();
+                                                    .Include(x=>x.Users)
+                                                    .Include(s => s.Statuses).Where(x => x.Users.Any(y => y.UserName == name)).Select(y => y.Orders.FirstOrDefault(x => x.Id == request.Order.id)).FirstOrDefaultAsync();
+
+            var company = await _context.Companies.AsNoTracking().Include(x => x.Orders).ThenInclude(o => o.Products)
+                                                    .Include(x => x.Orders).ThenInclude(o => o.InvoiceAddress)
+                                                    .Include(x => x.Orders).ThenInclude(o => o.DeliveryAddress)
+                                                    .Include(x => x.Users)
+                                                    .Include(s => s.Statuses).Where(x=>x.Users.Any(y=>y.UserName == name)).ToListAsync();
+
+            var order2 = company.Select(y => y.Orders.FirstOrDefault());
+            var order3 = company.Select(y => y.Orders.FirstOrDefault(x=>x.Id == request.Order.id));
+            var order4 = company.Select(y => y.Orders.FirstOrDefault(x=>x.Id == request.Order.id && y.Users.Any(u => u.UserName == _userAccessor.GetUsername())));
 
             var newStatus = await _context.Companies.Include(s => s.Statuses).Select(y => y.Statuses.FirstOrDefault(x => x.Id == int.Parse(request.Order.statusId))).FirstOrDefaultAsync();
 
@@ -47,7 +60,8 @@ namespace Application.Orders.Edit
 
             var result = await _context.SaveChangesAsync() > 0;
 
-            if (result) {
+            if (result)
+            {
                 var orderDto = _mapper.Map<OrderDto>(order);
                 return Result<OrderDto>.Success(orderDto);
             }

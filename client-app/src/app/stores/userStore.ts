@@ -4,17 +4,19 @@ import agent from "../api/agent";
 import { User, UserLoginFormValues } from "../models/user";
 import { store } from "./store";
 
+
 export default class UserStore{
+    
     user: User | null =  null;
     
     constructor(){
         makeAutoObservable(this);
     }
-
+    
     get isLoggedIn(){
         return !!this.user;
     }
-
+    
     logout = () =>{
         store.commonStore.setToken(null);
         window.localStorage.removeItem('jwt');

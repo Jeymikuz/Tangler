@@ -6,6 +6,7 @@ import { Container, Segment } from 'semantic-ui-react';
 import HomeDashboardPage from '../../features/dashboard/HomeDashboardPage';
 import OrderDetails from '../../features/dashboard/orderDetails/OrderDetails';
 import Orders from '../../features/dashboard/orders/Orders';
+import Statuses from '../../features/dashboard/statuses/Statuses';
 import HomePage from '../../features/home/HomePage';
 import UserLogin from '../../features/user/UserLogin';
 import { useStore } from '../stores/store';
@@ -55,6 +56,7 @@ function App() {
                 <PrivateRoute exact path='/dashboard' component={HomeDashboardPage} />
                 <PrivateRoute exact path='/dashboard/zamowienia' component={Orders} />
                 <PrivateRoute exact path='/dashboard/zamowienia/:id' component={OrderDetails} />
+                <PrivateRoute exact path='/dashboard/statusy' component={Statuses} />
               </Segment>
             </div>
 
