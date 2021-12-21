@@ -30,15 +30,15 @@ An application that helps e-commerce companies to manage their ordering processe
 - Login system with jwt token
 
 ## To do
-- Adding an order manually
-- Account registration (frontend)
-- Connecting accounts from sales platforms for automatic retrieval of orders
-- Manage statuses (add,edit,delete)
-- Generate invoice and receipt
-- Creating waybills for orders
-- Subaccounts for a company with credentials
-- Sending automatic emails depending on the status of an order
-- External API for users
+- [x] Adding an order manually
+- [ ] Account registration (frontend)
+- [ ] Connecting accounts from sales platforms for automatic retrieval of orders
+- [x] Manage statuses (add,edit,delete)
+- [ ] Generate invoice and receipt
+- [ ] Creating waybills for orders
+- [ ] Subaccounts for a company with credentials
+- [ ] Sending automatic emails depending on the status of an order
+- [ ] External API for users
 
 ## Usage
 
