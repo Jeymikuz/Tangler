@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Application.Core;
+using Domain;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Application.StatusesGroups.Edit
 {
-    public class Status
+    public class EditCommand : IRequest<Result<StatusGroup>>
     {
         public int Id { get; set; }
-        public int Index { get; set; }
         public string Name { get; set; }
-        public string Color { get; set; }
     }
 }

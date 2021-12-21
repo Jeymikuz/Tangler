@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Statuses.Create
+namespace Application.StatusesGroups.Create
 {
-    public class CreateCommand : IRequest<Result<Status>>
+    public class CreateCommand : IRequest<Result<StatusGroup>>
     {
-        public int GroupId { get; set; }
-        public Status Status { get; set; }
+        public string Name { get; set; }
     }
 }

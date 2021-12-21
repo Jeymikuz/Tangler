@@ -5,5 +5,5 @@ using System.Collections.Generic;
 
 namespace Application.Statuses.List
 {
-    public class ListQuery : IRequest<Result<List<Status>>> { }
+    public class ListQuery : IRequest<Result<List<StatusGroup>>> { }
 }

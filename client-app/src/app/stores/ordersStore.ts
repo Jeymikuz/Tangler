@@ -4,11 +4,13 @@ import agent from "../api/agent";
 import {NewOrder, Order} from '../models/order';
 import { OrderProduct } from "../models/orderProduct";
 import { Status } from "../models/status";
+import { StatusGroup } from "../models/statusGroup";
 
 
 export default class OrdersStore{
     orderRegistry = new Map<number,Order>();
     statuses: Status[] | undefined = undefined;
+    statusGroups: StatusGroup[] | undefined = undefined;
     selectedStatus: Status | undefined = undefined;
     selectedOrder: Order | undefined = undefined;
     loading = false;
@@ -25,6 +27,79 @@ export default class OrdersStore{
                 this.loadOrders();
             }
         )
+    }
+
+    updateStatusesIndexes = async(
+        groupId: number, 
+        status1: {id: number, index: number}, 
+        status2: {id: number, index: number}) =>{
+            try{
+                console.log("Updatowanie statusów")
+                await agent.Statuses.editIndexes(groupId,status1,status2);
+            }catch(error){
+                console.log(error);
+            }
+    }    
+
+    editGroupStatus = async(statusGroup: StatusGroup)=>{
+        try{
+            var editedGroup = await agent.StatusesGroups.edit(statusGroup.id, statusGroup.name);
+            var index = this.statusGroups?.findIndex(x=> x.id === statusGroup.id);
+            runInAction(() => {
+                console.log(this.statusGroups);
+                console.log('LELELE')
+                console.log('index ' + index)
+                console.log(editedGroup)
+                this.statusGroups![index!] = editedGroup;
+                console.log(this.statusGroups);
+            })
+
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    createGroupsStatus = async(name: string) => {
+        try{
+            console.log(name)
+            var newGroup = await agent.StatusesGroups.create(name);
+            
+            runInAction(()=>{
+                this.statusGroups?.push(newGroup);
+            })
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    createStatus = async(groupId: number, status: Status)=>{
+        try{
+            var result = await agent.Statuses.create({groupId: groupId, status: status});
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    updateStatusOrder = (id: number, indexStart: number, indexEnd: number ) =>{
+        if(indexStart !== indexEnd){
+
+            const items = Array.from(this.statusGroups?.find(x=>x.id === id)?.statuses!);
+            const [reorderedItems] = items.splice(indexStart,1);
+            items.splice(indexEnd,0,reorderedItems);
+            
+            const status1 = this.statusGroups?.find(x=>x.id === id)?.statuses?.find(x=>x.index === indexStart);
+            const status2 = this.statusGroups?.find(x=>x.id === id)?.statuses?.find(x=>x.index === indexEnd);
+            
+            this.updateStatusesIndexes(id,{id: status1?.id!, index: status2?.index!},{id: status2?.id!, index: status1?.index!});
+
+            runInAction(()=>{
+              //  this.statusGroups!.find(x=>x.id === id)!.statuses!.find(x=>x.index === indexStart)!.index = indexEnd
+              //  this.statusGroups!.find(x=>x.id === id)!.statuses!.find(x=>x.index === indexEnd)!.index = indexStart;
+              var temp = 0;
+              items.map((s) => s.index = temp++ );
+              this.statusGroups!.find(x=>x.id === id)!.statuses = items;
+            })
+        }
     }
 
     reset = () =>{
@@ -104,10 +179,12 @@ export default class OrdersStore{
         try{
             this.setLoading(true);
             const result = await agent.Orders.add(order);
-            this.orderRegistry.set(result.id,result);
-            this.selectedOrder = result;
-            history.push(`/dashboard/zamowienia/${result.id}`);
-            this.setLoading(false);
+            runInAction(()=>{
+                this.orderRegistry.set(result.id,result);
+                this.selectedOrder = result;
+                history.push(`/dashboard/zamowienia/${result.id}`);
+                this.setLoading(false);
+            })
         } catch(error) {
             this.setLoading(false);
             console.log(error);
@@ -118,20 +195,42 @@ export default class OrdersStore{
         this.addOrderModal = isOpen;
     }   
 
+    deleteStatus = async(statusId: number) =>{
+        try{
+            await agent.Statuses.delete(statusId).then(()=>{
+                runInAction(()=>{
+                var statusGroupId = this.statusGroups!.find(x=>x.statuses!.find(x=>x.index! === statusId!));
+                var indexOfStatusGroup = this.statusGroups!.indexOf(statusGroupId!);
+                var statusToRemove = this.statusGroups![indexOfStatusGroup].statuses?.find(x=>x.id === statusId);
+                var indexOfStatus = this.statusGroups![indexOfStatusGroup].statuses?.indexOf(statusToRemove!);
+                    this.statusGroups![indexOfStatusGroup].statuses!.slice(indexOfStatus,1);
+                })
+            });
+        } catch(errors){
+            console.log(errors);
+        }
+    }
+
     editStatus = async(status: Status) => {
         this.setLoading(true);
         try{
             let editedStatus = await agent.Statuses.edit(status);
-            if(this.statuses){
+            if(this.statusGroups){
                 runInAction(()=>{
-                    var index = this.statuses?.indexOf(this.selectedStatus!); 
-                    console.log(index);
-                    this.statuses![index!] = editedStatus;
-                    this.setStatusId(editedStatus.id);
-                    this.selectedStatus = editedStatus;
+                    if(this.statusGroups){
+                        var statusGroupId = this.statusGroups!.find(x=>x.statuses!.find(x=>x.index! === editedStatus.id!));
+                        var indexOfStatusGroup = this.statusGroups.indexOf(statusGroupId!);
+                        var statusToEdit = this.statusGroups[indexOfStatusGroup].statuses?.find(x=>x.id === editedStatus.id);
+                        var indexOfStatus = this.statusGroups[indexOfStatusGroup].statuses?.indexOf(statusToEdit!);
+
+                        this.statusGroups[indexOfStatusGroup].statuses![indexOfStatus!] = editedStatus;
+                        var index = this.statuses?.indexOf(this.selectedStatus!); 
+                        this.statuses![index!] = editedStatus;
+                        this.setStatusId(editedStatus.id);
+                        this.selectedStatus = editedStatus;
+                    }
                 })            
             }
-
         } catch(error){
             console.log(error);
         }
@@ -215,9 +314,19 @@ export default class OrdersStore{
     loadStatuses = async()=>{
         try{
         this.setLoading(true);
-        this.statuses = await agent.Statuses.list();
+        
+         const statusGroups= await agent.Statuses.list();
+         runInAction(()=>{
 
-
+             this.statusGroups = statusGroups;
+             this.statuses = [];
+            // eslint-disable-next-line array-callback-return
+            this.statusGroups!.map(x=>x.statuses?.map(status => {
+                this.statuses?.push(status);
+            }
+        )
+        )});
+            
         } catch(error) {
             console.log(error);
             this.setLoading(false);

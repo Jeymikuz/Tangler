@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence;
@@ -9,9 +10,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211206101758_StatusGroupAndIndexes")]
+    partial class StatusGroupAndIndexes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,39 +258,11 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int?>("StatusGroupId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
-
-                    b.HasIndex("StatusGroupId");
 
                     b.ToTable("Status");
-                });
-
-            modelBuilder.Entity("Domain.StatusGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<Guid?>("CompanyId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Index")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("StatusGroup");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -467,17 +441,6 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Company", null)
                         .WithMany("Statuses")
                         .HasForeignKey("CompanyId");
-
-                    b.HasOne("Domain.StatusGroup", null)
-                        .WithMany("Statuses")
-                        .HasForeignKey("StatusGroupId");
-                });
-
-            modelBuilder.Entity("Domain.StatusGroup", b =>
-                {
-                    b.HasOne("Domain.Company", null)
-                        .WithMany("StatusesGroups")
-                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -537,19 +500,12 @@ namespace Persistence.Migrations
 
                     b.Navigation("Statuses");
 
-                    b.Navigation("StatusesGroups");
-
                     b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Domain.Order", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Domain.StatusGroup", b =>
-                {
-                    b.Navigation("Statuses");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,31 +1,38 @@
 import { Formik } from "formik";
 import { observer } from "mobx-react-lite";
-import React from "react";
-import { Button, Form, Header} from "semantic-ui-react";
-import FColorPickerInput from "../../../app/common/form/FColorPickerInput";
+import { Button, DropdownItemProps, Form, Header } from "semantic-ui-react";
 import FTextInput from "../../../app/common/form/FTextInput";
-import { Status } from "../../../app/models/status";
+import { StatusGroup } from "../../../app/models/statusGroup";
 import { useStore } from "../../../app/stores/store";
 
 interface Props{
-    status: Status;
     setOpen: (isOpen: boolean) => void;
 }
 
-export default observer(function StatusEditForm({status, setOpen}:Props) {
-
-    const { ordersStore } = useStore();
-
+export default observer(function StatusGroupCreateForm({setOpen}:Props){
     
-    
+    const {ordersStore} = useStore();
 
-    return (
+    const groupsOptions: DropdownItemProps[] = [];
+    ordersStore.statusGroups?.forEach(x=> groupsOptions.push({
+        key: x.id,
+        value: x.id,
+        text: x.name
+    }))
+
+    const statusGroup: StatusGroup = {
+        id: 0,
+        name: '',
+        index: 0,
+        statuses: []
+    }
+
+
+    return(
         <Formik
-            initialValues={status!}
+            initialValues={statusGroup}
             onSubmit={(values, { setErrors }) => {
-                ordersStore.editStatus(values).then(() =>
-                    setOpen(false)
-                ).catch((errors) => setErrors(errors))
+                ordersStore.createGroupsStatus(values.name).then(()=> setOpen(false));
             }
             }
         >
@@ -36,11 +43,9 @@ export default observer(function StatusEditForm({status, setOpen}:Props) {
                     style={{ padding: '2rem' }}
                 >
                     <Header as='h2' textAlign='center'>
-                    Edytuj status
-                    <Header sub>ID: {status?.id}</Header>
+                    Utwórz grupę statusów
                         </Header>
-                    <FTextInput name='name' placeholder='Nazwa statusu' />
-                    <FColorPickerInput name='color' placeholder='Kolor HEX' type='text' />
+                    <FTextInput name='name' placeholder='Nazwa grupy' />
                     <Button type='submit' icon='check' loading={isSubmitting} floated='right' color='green' />
                 </Form>
             )}

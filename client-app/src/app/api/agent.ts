@@ -1,7 +1,9 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
+import { number } from 'yup/lib/locale';
 import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
+import { StatusGroup } from '../models/statusGroup';
 import { User, UserLoginFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -69,14 +71,23 @@ const Orders = {
 }
 
 const Statuses = {
-    list: () => request.get<Status[]>('/statuses'),
+    list: () => request.get<StatusGroup[]>('/statuses'),
     edit: (status: Status) => request.put<Status>('/statuses',status),
+    delete: (statusId: number) => request.del(`/statuses/${statusId}`),
+    create: (createObject: {groupId:number , status: Status}) => request.post('/statuses',createObject),
+    editIndexes: (groupId: number, status1: {id: number, index: number}, status2: {id: number, index: number}) => request.put('/statuses/indexes', {groupId,status1, status2}),
+}
+
+const StatusesGroups ={
+    create: (name: string) => request.post<StatusGroup>('/statusesgroups',{name: name}),
+    edit: (id: number, name: string) => request.put<StatusGroup>('/statusesgroups',{id: id, name: name}),
 }
 
 const agent = {
     Account,
     Orders,
-    Statuses
+    Statuses,
+    StatusesGroups
 }
 
 export default agent;

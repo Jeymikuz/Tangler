@@ -25,11 +25,57 @@ namespace Persistence
                 await userManager.CreateAsync(userAdmin, "Password");
                 await userManager.AddClaimAsync(userAdmin, new Claim("IsMain", "true"));
 
-                var status1 = new Status
+                var status1_1 = new Status
                 {
                     Name = "Nowe Zamówienia",
+                    Index=0,
                     Color = "#29D2A6"
                 };
+
+                var status1_2 = new Status
+                {
+                    Name = "Allegro - Nowe",
+                    Index = 2,
+                    Color = "#29D2A6"
+                };
+
+                var status1_3 = new Status
+                {
+                    Name = "Empik - Nowe",
+                    Index = 1,
+                    Color = "#29D2A6"
+                };
+
+                var statusGroup1_1 = new StatusGroup
+                {
+                    Index = 0,
+                    Name = "Wszystkie",
+                };
+
+                var statusGroup1_2 = new StatusGroup
+                {
+                    Index = 1,
+                    Name = "Nowe",
+                };
+
+                var statusGroup1_3 = new StatusGroup
+                {
+                    Index = 2,
+                    Name = "Spakowane",
+                };
+
+                var status1_4 = new Status
+                {
+                    Name = "Empik - Spakowane",
+                    Index = 0,
+                    Color = "#29D2A6"
+                };
+
+                statusGroup1_2.Statuses.Add(status1_1);
+                statusGroup1_2.Statuses.Add(status1_2);
+                statusGroup1_2.Statuses.Add(status1_3);
+
+                statusGroup1_3.Statuses.Add(status1_4);
 
                 var company1 = new Company
                 {
@@ -38,13 +84,20 @@ namespace Persistence
                     IsDeleted = false
                 };
 
-                company1.Statuses.Add(status1);
+                company1.Statuses.Add(status1_1);
+                company1.Statuses.Add(status1_2);
+                company1.Statuses.Add(status1_3);
+                company1.Statuses.Add(status1_4);
+
+                company1.StatusesGroups.Add(statusGroup1_1);
+                company1.StatusesGroups.Add(statusGroup1_2);
+                company1.StatusesGroups.Add(statusGroup1_3);
                 company1.Users.Add(userAdmin);
 
                 context.Companies.Add(company1);
                 context.SaveChanges();
 
-                status1 = company1.Statuses.FirstOrDefault();
+                status1_1 = company1.Statuses.FirstOrDefault();
 
                 var address = new Address
                 {
@@ -76,7 +129,7 @@ namespace Persistence
                     DeliveryAddress = address,
                     InvoiceAddress = address,
                     ClientMessage = "Proszę o szybką wysyłkę :)",
-                    Status = status1,
+                    Status = status1_1,
                     Products = products
                     
                 };
@@ -99,6 +152,12 @@ namespace Persistence
                     Color = "#29BED2"
                 };
 
+                var statusGroup2 = new StatusGroup
+                {
+                    Index = 0,
+                    Name = "Wszystkie",
+                };
+
                 var company2 = new Company
                 {
                     Name = "Guradians of The Galaxy",
@@ -106,7 +165,10 @@ namespace Persistence
                     IsDeleted = false
                 };
 
+                statusGroup2.Statuses.Add(status2);
                 company2.Statuses.Add(status2);
+
+                company2.StatusesGroups.Add(statusGroup2);
                 company2.Users.Add(normalUser);
 
                 context.Companies.Add(company2);

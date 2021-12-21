@@ -1,5 +1,6 @@
 ﻿using Application.Core;
 using Application.Interfaces;
+using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.Statuses.Create
 {
-    public class CreateHandler : IRequestHandler<CreateCommand, Result<Unit>>
+    public class CreateHandler : IRequestHandler<CreateCommand, Result<Status>>
     {
         private readonly IUserAccessor _userAccessor;
         private readonly DataContext _context;
@@ -23,23 +24,34 @@ namespace Application.Statuses.Create
             _context = context;
         }
 
-        public async Task<Result<Unit>> Handle(CreateCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Status>> Handle(CreateCommand request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.Include(x => x.Company).ThenInclude(s => s.Statuses).SingleOrDefaultAsync(u => u.UserName == _userAccessor.GetUsername());
+            var user = await _context.Users.Include(x => x.Company).ThenInclude(s => s.StatusesGroups).ThenInclude(x=>x.Statuses).SingleOrDefaultAsync(u => u.UserName == _userAccessor.GetUsername());
 
-            if (user is null) return Result<Unit>.Failure("User not found");
+            if (user is null) return Result<Status>.Failure("User not found");
 
-            user.Company.Statuses.Add(new Domain.Status
+            var group = user.Company.StatusesGroups.FirstOrDefault(x => x.Id == request.GroupId);
+            if(group.Statuses.Count > 0)
             {
-                Name = request.Name,
-                Color = request.Color
-            });
+            var biggestIndex = group.Statuses.OrderByDescending(x => x.Index).LastOrDefault().Index;
+            request.Status.Index = ++biggestIndex;
+            }
+            else
+            {
+            request.Status.Index = 0;
+            }
+
+            group.Statuses.Add(request.Status);
+            user.Company.Statuses.Add(request.Status);
 
             var result = await _context.SaveChangesAsync() > 0;
 
-            if (result) return Result<Unit>.Success(Unit.Value);
+            if (result)
+            {
+                return Result<Status>.Success(request.Status);
+            }
 
-            return Result<Unit>.Failure("Problem with database");
+            return Result<Status>.Failure("Problem with database");
         }
     }
 }

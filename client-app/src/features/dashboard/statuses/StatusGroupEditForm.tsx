@@ -4,26 +4,23 @@ import React from "react";
 import { Button, Form, Header} from "semantic-ui-react";
 import FColorPickerInput from "../../../app/common/form/FColorPickerInput";
 import FTextInput from "../../../app/common/form/FTextInput";
-import { Status } from "../../../app/models/status";
+import { StatusGroup } from "../../../app/models/statusGroup";
 import { useStore } from "../../../app/stores/store";
 
 interface Props{
-    status: Status;
+    statusGroup: StatusGroup;
     setOpen: (isOpen: boolean) => void;
 }
 
-export default observer(function StatusEditForm({status, setOpen}:Props) {
+export default observer(function StatusGroupEditForm({statusGroup, setOpen}:Props) {
 
     const { ordersStore } = useStore();
 
-    
-    
-
     return (
         <Formik
-            initialValues={status!}
+            initialValues={statusGroup}
             onSubmit={(values, { setErrors }) => {
-                ordersStore.editStatus(values).then(() =>
+                ordersStore.editGroupStatus(values).then(() =>
                     setOpen(false)
                 ).catch((errors) => setErrors(errors))
             }
@@ -36,11 +33,9 @@ export default observer(function StatusEditForm({status, setOpen}:Props) {
                     style={{ padding: '2rem' }}
                 >
                     <Header as='h2' textAlign='center'>
-                    Edytuj status
-                    <Header sub>ID: {status?.id}</Header>
+                    Edytuj grupę 
                         </Header>
-                    <FTextInput name='name' placeholder='Nazwa statusu' />
-                    <FColorPickerInput name='color' placeholder='Kolor HEX' type='text' />
+                    <FTextInput name='name' placeholder='Nazwa grupy' />
                     <Button type='submit' icon='check' loading={isSubmitting} floated='right' color='green' />
                 </Form>
             )}

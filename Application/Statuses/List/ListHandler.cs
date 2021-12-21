@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Statuses.List
 {
-    public class ListHandler : IRequestHandler<ListQuery, Result<List<Status>>>
+    public class ListHandler : IRequestHandler<ListQuery, Result<List<StatusGroup>>>
     {
         private readonly IUserAccessor _userAccessor;
         private readonly DataContext _context;
@@ -22,13 +22,13 @@ namespace Application.Statuses.List
             _context = context;
         }
 
-        public async Task<Result<List<Status>>> Handle(ListQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<StatusGroup>>> Handle(ListQuery request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.Include(x => x.Company).ThenInclude(s => s.Statuses).SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
+            var user = await _context.Users.Include(x => x.Company).ThenInclude(s => s.StatusesGroups).ThenInclude(x=>x.Statuses).SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
 
-            if (user is null) return Result<List<Status>>.Failure("User not found");
+            if (user is null) return Result<List<StatusGroup>>.Failure("User not found");
 
-            return Result<List<Status>>.Success(user.Company.Statuses.ToList());
+            return Result<List<StatusGroup>>.Success(user.Company.StatusesGroups.ToList());
         }
     }
 }

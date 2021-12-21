@@ -1,17 +1,17 @@
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { Modal } from "semantic-ui-react";
-import { Status } from "../../../app/models/status";
-import StatusCreateForm from "./StatusCreateForm";
-import StatusEditForm from "./StatusEditForm";
+import { StatusGroup } from "../../../app/models/statusGroup";
+import StatusGroupCreateForm from "./StatusGroupCreateForm";
+import StatusGroupEditForm from "./StatusGroupEditForm";
 
 interface Props {
     component: React.FunctionComponent | React.ReactElement;
-    status?: Status;
+    statusGroup?: StatusGroup;
     isNew?: boolean;
 }
 
-export default observer(function StatusModal({ component, status, isNew }: Props) {
+export default observer(function StatusGroupModal({ component, statusGroup, isNew }: Props) {
     
     const [isOpen, setOpen] = useState(false);
 
@@ -25,12 +25,10 @@ export default observer(function StatusModal({ component, status, isNew }: Props
             trigger={component}
         >
             {isNew ? (
-            <StatusCreateForm setOpen={setOpen} />
+            <StatusGroupCreateForm setOpen={setOpen} />
             ) : 
-            <StatusEditForm 
-            status={status!}
-            setOpen={setOpen}
-            />}
+            <StatusGroupEditForm statusGroup={statusGroup!} setOpen={setOpen} />
+            } 
             
         </Modal>
     )

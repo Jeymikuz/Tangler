@@ -20,7 +20,9 @@ export default observer(function OrdersList() {
                 {ordersStore.selectedStatus?.id === 0 || !ordersStore.selectedStatus ? (
                     <Label style={{ backgroundColor: '#fbbd08', color: 'white' }} >Wszystkie Zamówienia</Label>
                 ) : (
-                    <StatusModal component={<Label style={{ backgroundColor: ordersStore.selectedStatus?.color, color: 'white' }} >{ordersStore.selectedStatus?.name}</Label>} />
+                    <StatusModal 
+                    status={ordersStore.selectedStatus}
+                    component={<Label style={{ backgroundColor: ordersStore.selectedStatus?.color, color: 'white' }} >{ordersStore.selectedStatus?.name}</Label>} />
 
                 )}
             </Header>
