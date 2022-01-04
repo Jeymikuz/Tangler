@@ -2,7 +2,6 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import { Dropdown, Menu } from "semantic-ui-react";
 import { useStore } from "../stores/store";
-import { Colors } from "../common/Colors";
 
 export default observer(function DashboardNavbar() {
     const { userStore,ordersStore } = useStore();

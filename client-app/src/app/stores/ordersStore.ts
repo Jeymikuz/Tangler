@@ -32,6 +32,9 @@ export default class OrdersStore{
     updateOrderStatus = async(orderId: number, statusId: number) =>{
         try{
             await agent.Orders.updateStatus(orderId,statusId);
+            runInAction(()=>{
+                this.selectedOrder!.statusId=statusId.toString();
+            })
         }catch(error){
             
         }
