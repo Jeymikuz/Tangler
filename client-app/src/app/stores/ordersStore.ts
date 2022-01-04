@@ -29,6 +29,14 @@ export default class OrdersStore{
         )
     }
 
+    updateOrderStatus = async(orderId: number, statusId: number) =>{
+        try{
+            await agent.Orders.updateStatus(orderId,statusId);
+        }catch(error){
+            
+        }
+    }
+
     updateStatusesIndexes = async(
         groupId: number, 
         status1: {id: number, index: number}, 
@@ -74,9 +82,24 @@ export default class OrdersStore{
 
     createStatus = async(groupId: number, status: Status)=>{
         try{
-            var result = await agent.Statuses.create({groupId: groupId, status: status});
+            await agent.Statuses.create({groupId: groupId, status: status});
+            await this.loadStatuses();
         } catch(error){
             console.log(error);
+        }
+    }
+
+    deleteStatusGroup = async(groupId: number) => {
+        try{ 
+            console.log(`Usuwam grupe ${groupId}`)
+            await agent.StatusesGroups.delete(groupId);
+            await this.loadStatuses();
+        } catch(error: any){
+            if(error.response){
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.header);
+            }
         }
     }
 
@@ -206,6 +229,8 @@ export default class OrdersStore{
                     this.statusGroups![indexOfStatusGroup].statuses!.slice(indexOfStatus,1);
                 })
             });
+
+            await this.loadStatuses();
         } catch(errors){
             console.log(errors);
         }
@@ -251,7 +276,7 @@ export default class OrdersStore{
 
             const result = await agent.Orders.list(params);
             runInAction(()=>{
-                result.forEach(order=>{
+                result.forEach((order: Order)=>{
                     this.orderRegistry.set(order.id,order);
                 })
                 this.setLoading(false);
@@ -296,9 +321,9 @@ export default class OrdersStore{
             return order;
         } else {
             order = await agent.Orders.details(id);
-            this.setOrder(order);
+            this.setOrder(order!);
             if(!this.statuses) await this.loadStatuses();
-            this.setStatusId(parseInt(order.statusId!));
+            this.setStatusId(parseInt(order!.statusId!));
             this.setLoading(false);
         }
         } catch(error) {

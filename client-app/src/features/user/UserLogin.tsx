@@ -5,6 +5,7 @@ import { Button, Form, Grid, Header, Label, Segment } from "semantic-ui-react";
 import FTextInput from "../../app/common/form/FTextInput";
 import { useStore } from "../../app/stores/store";
 import * as Yup from 'yup';
+import { Colors } from "../../app/common/Colors";
 
 export default observer(function UserLogin() {
 
@@ -32,7 +33,7 @@ export default observer(function UserLogin() {
                             <FTextInput name='username' placeholder='Nazwa użytkownika' />
                             <FTextInput name='password' placeholder='Hasło' type='password' />
                             <ErrorMessage name='error' render={() => <Label style={{ marginBottom: 10 }} basic color='red' content={errors.error} />} />
-                            <Button loading={isSubmitting} fluid positive content='Zaloguj' type='submit' />
+                            <Button loading={isSubmitting} fluid content='Zaloguj' type='submit' style={{background: Colors.brightOrange}} />
                         </Form>
                     )}
                 </Formik>

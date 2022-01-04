@@ -52,7 +52,7 @@ export default observer(function StatusCreateForm({setOpen}:Props){
                 <Form className='ui form'
                     onSubmit={handleSubmit}
                     autoComplete='off'
-                    style={{ padding: '2rem' }}
+                    style={{ padding: '2rem',marginBottom: '2rem' }}
                 >
                     <Header as='h2' textAlign='center'>
                     Utwórz status

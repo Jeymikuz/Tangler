@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
-import { number } from 'yup/lib/locale';
 import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
 import { StatusGroup } from '../models/statusGroup';
@@ -68,6 +67,7 @@ const Orders = {
     details: (id: number) => request.get<Order>(`/orders/${id}`),
     add:(order: NewOrder) => request.post<Order>('/orders',order),
     edit:(order: Order) => request.put<Order>('/orders',order),
+    updateStatus:(orderId: number, statusId: number) => request.post('/orders/updateStatus',{orderId: orderId, statusId: statusId}),
 }
 
 const Statuses = {
@@ -81,6 +81,7 @@ const Statuses = {
 const StatusesGroups ={
     create: (name: string) => request.post<StatusGroup>('/statusesgroups',{name: name}),
     edit: (id: number, name: string) => request.put<StatusGroup>('/statusesgroups',{id: id, name: name}),
+    delete: (groupId:number) => request.del(`/statusesgroups/${groupId}`),
 }
 
 const agent = {

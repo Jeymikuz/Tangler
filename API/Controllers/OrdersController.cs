@@ -5,6 +5,8 @@ using Application.Orders.Edit;
 using Application.Orders.List;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using API.DTOs;
+using Application.Orders.UpdateStatus;
 
 namespace API.Controllers
 {
@@ -32,6 +34,13 @@ namespace API.Controllers
         public async Task<IActionResult> EditOrder(OrderDto order)
          {
             return HandleResult(await Mediator.Send(new EditCommand { Order = order}));
+        }
+
+        [HttpPost("updateStatus")]
+        public async Task<IActionResult> UpdateOrderStatus(UpdateOrderStatusDto dto)
+        {
+            return HandleResult(await Mediator.Send(new UpdateOrderStatusCommand()
+                {OrderId = dto.orderId, StatusId = dto.statusId}));
         }
     }
 }
