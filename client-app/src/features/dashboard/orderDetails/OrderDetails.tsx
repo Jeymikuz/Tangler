@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Button, Dropdown, Header, Icon, Label, Segment } from "semantic-ui-react";
 import { history } from "../../..";
+import { Status } from "../../../app/models/status";
 import { useStore } from "../../../app/stores/store";
 import OrderInfo from "./OrderInfo";
 import OrderProducts from "./OrderProducts";
@@ -17,19 +18,38 @@ export default observer(function OrderDetails() {
 
     const countryOptions: any[] = []
 
+    const [status,setStatus] = useState<Status>({
+        id: -1,
+        color: '#FFFFFF',
+        index: -1,
+        name: 'None'
+    });
+
       ordersStore.statuses?.forEach(x=> countryOptions.push({
           key: x.id,
           value: x.id,
-          text: x.name
+          text: x.name,
       }))
 
-    useEffect(() => {
-        if (id) loadOrder(parseInt(id));
+      function updateStatus (statusId: number){
+            console.log('Zamownienie: ' + order?.statusId);
+            const findedStatus = ordersStore.statuses?.find(x=>x.id === statusId);
+            setStatus(findedStatus!);
+            console.log(status.name)
+      }
 
+    useEffect(() => {
+        if (id) loadOrder(parseInt(id)).then(()=>{
+            if(order){
+                const findedStatus = ordersStore.statuses?.find(x=>x.id.toString() === order!.statusId!);
+                setStatus(findedStatus!);
+            }
+        });
+    
         return () => {
             cleareSelectedOrder();
         }
-    }, [cleareSelectedOrder, loadOrder, ordersStore, id])
+    }, [cleareSelectedOrder, loadOrder, ordersStore, id, order])
 
     function returnToList() {
         history.goBack();
@@ -54,18 +74,26 @@ export default observer(function OrderDetails() {
                 (<Dropdown 
                     placeholder='Wybierz status' 
                     options={countryOptions} 
+                    inline
                     selection
                     onChange={(e: any,{name,value}: any)=>{
-                        console.log('Name '+ name+' '+ "Value: "+ value);
+                        console.log('Name '+ name+ " Value: "+ value);
                         ordersStore.updateOrderStatus(order.id, value).then(() => setShowEditStatus(false));
+                        updateStatus(value);
                     }}
+                    style={{marginLeft: '2rem', }}
                     />) : (
-                      <Label
-                            tag
-                            onClick={()=>setShowEditStatus(true)}
-                            style={{ backgroundColor: ordersStore.selectedStatus?.color, color: 'white', marginLeft: '1.3rem' }} >
-                            {ordersStore.selectedStatus?.name}
-                     </Label>    
+                        <>
+                        {status && 
+                        <Label
+                        tag
+                        onClick={()=>setShowEditStatus(true)}
+                        style={{ backgroundColor: status.color, color: 'white', marginLeft: '1.3rem' }} >
+                        {status.name}
+                 </Label>    
+                        }
+                        </>
+                      
                 )}
                 <Header.Subheader>
                     10.10.2021 15:45
