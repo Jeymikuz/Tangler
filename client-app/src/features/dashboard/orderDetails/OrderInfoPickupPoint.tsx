@@ -36,23 +36,23 @@ export default observer(function OrderInfoPickupPoint({ order }: Props) {
                     <List>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Nazwa </List.Description>
-                            <List.Header></List.Header>
+                            <List.Header>{order.pickUpPoint?.name}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} > ID </List.Description>
-                            <List.Header></List.Header>
+                            <List.Header>{order.pickUpPoint?.pointId}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Adres </List.Description>
-                            <List.Header></List.Header>
+                            <List.Header>{order.pickUpPoint?.address?.street}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Kod pocztowy</List.Description>
-                            <List.Header></List.Header>
+                            <List.Header>{order.pickUpPoint?.address?.zipcode}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Miasto</List.Description>
-                            <List.Header></List.Header>
+                            <List.Header>{order.pickUpPoint?.address?.city}</List.Header>
                         </List.Item>
                     </List>
                 </>

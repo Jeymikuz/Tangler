@@ -96,7 +96,7 @@ export default observer(function OrderDetails() {
                       
                 )}
                 <Header.Subheader>
-                    10.10.2021 15:45
+                    {order.orderedAt}
                 </Header.Subheader>
             </Header>
             <Segment style={{ margin: 50, marginTop: 10 }} >

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence;
@@ -9,9 +10,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220105211326_UpdatedEntities")]
+    partial class UpdatedEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,8 +139,11 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AddressId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .HasColumnType("text");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
@@ -149,9 +154,10 @@ namespace Persistence.Migrations
                     b.Property<string>("NIP")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("text");
 
-                    b.HasIndex("AddressId");
+                    b.HasKey("Id");
 
                     b.ToTable("Invoice");
                 });
@@ -171,9 +177,6 @@ namespace Persistence.Migrations
 
                     b.Property<Guid?>("CompanyId")
                         .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeliveryAddressId")
                         .HasColumnType("uuid");
@@ -198,9 +201,6 @@ namespace Persistence.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("OrderedAt")
-                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("PaymentMethod")
                         .HasColumnType("text");
@@ -284,18 +284,19 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AddressId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("City")
                         .HasColumnType("text");
 
                     b.Property<string>("PointId")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("text");
 
-                    b.HasIndex("AddressId");
+                    b.HasKey("Id");
 
                     b.ToTable("PickUpPoint");
                 });
@@ -493,15 +494,6 @@ namespace Persistence.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("Domain.Invoice", b =>
-                {
-                    b.HasOne("Domain.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
-                    b.Navigation("Address");
-                });
-
             modelBuilder.Entity("Domain.Order", b =>
                 {
                     b.HasOne("Domain.Company", null)
@@ -544,15 +536,6 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("Domain.PickUpPoint", b =>
-                {
-                    b.HasOne("Domain.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
-                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Domain.Status", b =>
