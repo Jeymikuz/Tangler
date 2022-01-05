@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence;
@@ -9,9 +10,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220105211537_UpdatedEntitiesv2")]
+    partial class UpdatedEntitiesv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,9 +174,6 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("CompanyId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<Guid?>("DeliveryAddressId")
                         .HasColumnType("uuid");
 
@@ -198,9 +197,6 @@ namespace Persistence.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("OrderedAt")
-                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("PaymentMethod")
                         .HasColumnType("text");
@@ -286,9 +282,6 @@ namespace Persistence.Migrations
 
                     b.Property<Guid?>("AddressId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
 
                     b.Property<string>("PointId")
                         .HasColumnType("text");

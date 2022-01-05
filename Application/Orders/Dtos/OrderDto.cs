@@ -14,8 +14,11 @@ namespace Application.Orders.Dtos
         decimal deliveryPrice,
         OrderAddressDto DeliveryAddress,
         OrderAddressDto InvoiceAddress,
+        InvoiceDto invoice,
+        PickUpPointDto pickUpPoint,
         ICollection<OrderProductDto> products,
         string clientMessage,
-        string statusId
+        string statusId,
+        string orderedAt
         );
 }

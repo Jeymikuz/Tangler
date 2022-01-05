@@ -25,9 +25,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> OrdersList([FromQuery]int statusid)
+        public async Task<IActionResult> OrdersList([FromQuery]int statusId)
         {
-            return HandleResult(await Mediator.Send(new ListQuery { Id = statusid }));
+            return HandleResult(await Mediator.Send(new ListQuery { Id = statusId }));
         }
 
         [HttpPut]
