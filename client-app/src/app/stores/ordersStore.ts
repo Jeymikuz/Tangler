@@ -324,6 +324,7 @@ export default class OrdersStore{
             return order;
         } else {
             order = await agent.Orders.details(id);
+            console.log(order);
             this.setOrder(order!);
             if(!this.statuses) await this.loadStatuses();
             this.setStatusId(parseInt(order!.statusId!));

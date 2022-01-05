@@ -95,7 +95,7 @@ namespace Persistence
                 company1.Users.Add(userAdmin);
 
                 context.Companies.Add(company1);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
 
                 status1_1 = company1.Statuses.FirstOrDefault();
 
@@ -130,8 +130,33 @@ namespace Persistence
                     InvoiceAddress = address,
                     ClientMessage = "Proszę o szybką wysyłkę :)",
                     Status = status1_1,
-                    Products = products
-                    
+                    Products = products,
+                    DeliveryPrice = 9.99m,
+                    Invoice = new Invoice()
+                    {
+                        Address = new Address()
+                        {
+                            City = "Wrocław",
+                            Street = "Grzybowa 10b",
+                            ZipCode = "55-420",
+                        },
+                        FirstName = "Peter",
+                        LastName = "Quill",
+                        NIP = "5331174794",
+                    },
+                    ClientLogin = "StarLord2137",
+                    PickUpPoint = new PickUpPoint()
+                    {
+                        Name = "Paczkomaty 24/7",
+                        Address = new Address()
+                        {
+                            City = "Wrocław",
+                            Street = "Fifirafa 21b",
+                            ZipCode = "21-3769"
+                        }
+                    },
+                    CreatedAt = DateTime.Now,
+                    OrderedAt = DateTime.Now.AddMinutes(-15),
                 };
 
                 company1.Orders.Add(order);
@@ -160,7 +185,7 @@ namespace Persistence
 
                 var company2 = new Company
                 {
-                    Name = "Guradians of The Galaxy",
+                    Name = "Guardians of The Galaxy",
                     NIP = "1234567890",
                     IsDeleted = false
                 };
@@ -173,7 +198,7 @@ namespace Persistence
 
                 context.Companies.Add(company2);
 
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
 
 

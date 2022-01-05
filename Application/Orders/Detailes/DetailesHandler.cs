@@ -29,6 +29,8 @@ namespace Application.Orders.Detailes
             var companie = await _context.Companies.Include(x => x.Orders).ThenInclude(o => o.Products)
                                                     .Include(x => x.Orders).ThenInclude(o => o.InvoiceAddress)
                                                     .Include(x => x.Orders).ThenInclude(o => o.DeliveryAddress)
+                                                    .Include(x => x.Orders).ThenInclude(x => x.Invoice).ThenInclude(x => x.Address)
+                                                    .Include(x => x.Orders).ThenInclude(x => x.PickUpPoint).ThenInclude(x=>x.Address)
                                                     .Include(s => s.Statuses)
                                                     .SingleOrDefaultAsync(x => x.Users.Any(x => x.UserName == _userAccessor.GetUsername()));
             if (companie == null) return Result<OrderDto>.Failure("Companie not found");

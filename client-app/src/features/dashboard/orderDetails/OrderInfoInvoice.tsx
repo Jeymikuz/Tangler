@@ -36,33 +36,33 @@ export default observer(function OrderInfoInvoice({ order, descriptionStyle }: P
                     <List>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Imię i Nazwisko </List.Description>
-                            <List.Header>{order.firstName} {order.lastName}</List.Header>
+                            <List.Header>{order.invoice?.firstName} {order.invoice?.lastName}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Firma </List.Description>
-                            <List.Header>Guardians of the Galaxy</List.Header>
+                            <List.Header>Ehh</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Adres</List.Description>
                             {order.deliveryAddress && (
-                                <List.Header>{order.deliveryAddress.street}</List.Header>
+                                <List.Header>{order.invoice?.address?.street}</List.Header>
                             )}
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
                             {order.deliveryAddress && (
-                                <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                <List.Header>{order.invoice?.address?.zipcode}</List.Header>
                             )}
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Miasto</List.Description>
                             {order.deliveryAddress && (
-                                <List.Header>{order.deliveryAddress.city}</List.Header>
+                                <List.Header>{order.invoice?.address?.city}</List.Header>
                             )}
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >NIP</List.Description>
-                            <List.Header>997</List.Header>
+                            <List.Header>{order.invoice?.nip}</List.Header>
                         </List.Item>
                     </List>
                 </>
