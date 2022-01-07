@@ -51,7 +51,7 @@ export default observer(function OrderInfoInvoice({ order, descriptionStyle }: P
                         <List.Item>
                             <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
                             {order.deliveryAddress && (
-                                <List.Header>{order.invoice?.address?.zipcode}</List.Header>
+                                <List.Header>{order.invoice?.address!.zipcode}</List.Header>
                             )}
                         </List.Item>
                         <List.Item>
