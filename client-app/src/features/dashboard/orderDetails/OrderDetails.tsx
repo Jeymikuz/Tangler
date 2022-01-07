@@ -11,7 +11,7 @@ import OrderProducts from "./OrderProducts";
 export default observer(function OrderDetails() {
 
     const { ordersStore } = useStore();
-    const { cleareSelectedOrder, loadOrder, selectedOrder: order, loading } = ordersStore;
+    const { cleareSelectedOrder, loadOrder, selectedOrder: order, loading, loadOrderStatus } = ordersStore;
     const { id } = useParams<{ id: string }>();
 
     const [showEditStatus, setShowEditStatus] = useState(false);    
@@ -32,24 +32,25 @@ export default observer(function OrderDetails() {
       }))
 
       function updateStatus (statusId: number){
-            console.log('Zamownienie: ' + order?.statusId);
             const findedStatus = ordersStore.statuses?.find(x=>x.id === statusId);
             setStatus(findedStatus!);
             console.log(status.name)
       }
 
     useEffect(() => {
-        if (id) loadOrder(parseInt(id)).then(()=>{
-            if(order){
-                const findedStatus = ordersStore.statuses?.find(x=>x.id.toString() === order!.statusId!);
-                setStatus(findedStatus!);
-            }
-        });
+        async function loadOrderAndStatus(){
+        const founderOrder = await loadOrder(parseInt(id));
+        if(founderOrder){
+            var status = loadOrderStatus(parseInt(founderOrder.statusId!));
+            setStatus(status!);
+        }}
+
+        loadOrderAndStatus();
     
         return () => {
             cleareSelectedOrder();
         }
-    }, [cleareSelectedOrder, loadOrder, ordersStore, id, order])
+    }, [loadOrder, cleareSelectedOrder, id, loadOrderStatus])
 
     function returnToList() {
         history.goBack();

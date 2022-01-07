@@ -243,6 +243,7 @@ export default class OrdersStore{
         this.setLoading(true);
         try{
             let editedStatus = await agent.Statuses.edit(status);
+            console.log(editedStatus);
             if(this.statusGroups){
                 runInAction(()=>{
                     if(this.statusGroups){
@@ -312,23 +313,29 @@ export default class OrdersStore{
     private getOrder = (id:number) =>{
         return this.orderRegistry.get(id);
     }
+
+    loadOrderStatus = (statusId: number) =>{
+        const findedStatus = this.statuses?.find(x=>x.id === statusId);
+        return findedStatus;
+    }
+
     loadOrder = async (id: number) =>{
         this.setLoading(true);
         let order = this.getOrder(id);
         try{
         if(order){
             this.setOrder(order);
-            this.setStatusId(parseInt(order.statusId!));
+       //     this.setStatusId(parseInt(order.statusId!));
             this.setLoading(false);
            
             return order;
         } else {
             order = await agent.Orders.details(id);
-            console.log(order);
             this.setOrder(order!);
             if(!this.statuses) await this.loadStatuses();
             this.setStatusId(parseInt(order!.statusId!));
             this.setLoading(false);
+            return order;
         }
         } catch(error) {
             console.log(error);
