@@ -13,6 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Services.HostedServices;
+using Application.Integrations.Services;
+using Infrastructure.Intergrations.Woocommerce;
 
 namespace API.Extensions
 {
@@ -42,6 +45,10 @@ namespace API.Extensions
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
             services.AddMediatR(typeof(CreateHandler).Assembly);
+
+            services.AddTransient<IManageOrders<WoocommerceService>, WoocommerceService>();
+
+            services.AddHostedService<IntegrationOrderScheduler>();
 
             return services;
         }

@@ -24,6 +24,9 @@ export default observer(function DashboardSidebar() {
                         <Menu.Item as={NavLink} to='/dashboard/statusy' name='statusy-zamowien'>Statusy Zamówień</Menu.Item>
                     </Menu.Menu>
                     <Menu.Menu>
+                        <Menu.Item as={NavLink} to='/dashboard/integracje' name='ustawienia'>Integracje</Menu.Item>
+                    </Menu.Menu>
+                    <Menu.Menu>
                         <Menu.Item as={NavLink} to='/dashboard/ustawienia' name='ustawienia'>Ustawienia</Menu.Item>
                     </Menu.Menu>
                 </Menu.Item>

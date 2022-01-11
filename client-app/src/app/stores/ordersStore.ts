@@ -1,6 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
+import { Integration, NewIntegration } from "../models/integration";
 import {NewOrder, Order} from '../models/order';
 import { OrderProduct } from "../models/orderProduct";
 import { Status } from "../models/status";
@@ -13,6 +14,7 @@ export default class OrdersStore{
     statusGroups: StatusGroup[] | undefined = undefined;
     selectedStatus: Status | undefined = undefined;
     selectedOrder: Order | undefined = undefined;
+    integrations: Integration[] | undefined = undefined;
     loading = false;
     statusId = 0;
     statusEditModal = false; 
@@ -27,6 +29,30 @@ export default class OrdersStore{
                 this.loadOrders();
             }
         )
+    }
+
+    createIntegration = async(newIntegration: NewIntegration) => {
+        try{
+            await agent.Integrations.create(newIntegration);
+        }catch(error){
+
+        }
+    }
+
+    deleteIntegrations = async(id: string) => {
+        try{
+            await agent.Integrations.delete(id);
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    loadIntegrations = async() =>{
+        try{
+            this.integrations = await agent.Integrations.list();
+        }catch(error){
+            console.log(error);
+        }
     }
 
     updateOrderStatus = async(orderId: number, statusId: number) =>{
