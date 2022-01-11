@@ -10,6 +10,7 @@ namespace Domain
     public class Order
     {
         public int Id { get; set; }
+        public string ExternalId { get; set; }
         public string ClientLogin { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,7 +18,7 @@ namespace Domain
         public string Email { get; set; }
         public string PaymentMethod { get; set; }
         public string DeliveryMethod { get; set; }
-        public decimal DeliveryPrice { get; set; }
+        public decimal? DeliveryPrice { get; set; }
         public Address DeliveryAddress { get; set; }
         public Address InvoiceAddress { get; set; }
         public Invoice Invoice { get; set; }

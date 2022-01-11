@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Enums;
 
 namespace Persistence
 {
@@ -160,6 +161,19 @@ namespace Persistence
                 };
 
                 company1.Orders.Add(order);
+
+                var woocommerceIntegration = new Integration()
+                {
+                    IntegrationType = IntegrationType.Woocommerce,
+                    ClientKeys = new List<IntegrationKeyValueItem>(),
+                    PrivateName = "Woocomerce Sklep 1",
+                    SiteUrl = "https://word.test/wordpress"
+                };
+
+                woocommerceIntegration.ClientKeys.Add(new IntegrationKeyValueItem("client_key", "ck_86912ac120df7e85f1117de1d9232dcbc46994c1"));
+                woocommerceIntegration.ClientKeys.Add(new IntegrationKeyValueItem("private_key", "cs_635761e4fe5781cf82fe1ad1b9f6073554e7e30d"));
+
+                company1.Integrations.Add(woocommerceIntegration);
 
                 var normalUser = new AppUser()
                 {

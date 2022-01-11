@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence;
@@ -9,9 +10,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220107132707_UpdatedIntegration")]
+    partial class UpdatedIntegration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,9 +142,6 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("CompanyId")
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("ConnectionProblem")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("IntegrationType")
                         .HasColumnType("integer");
 
@@ -232,13 +231,10 @@ namespace Persistence.Migrations
                     b.Property<string>("DeliveryMethod")
                         .HasColumnType("text");
 
-                    b.Property<decimal?>("DeliveryPrice")
+                    b.Property<decimal>("DeliveryPrice")
                         .HasColumnType("numeric");
 
                     b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ExternalId")
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
@@ -298,8 +294,8 @@ namespace Persistence.Migrations
                     b.Property<string>("EAN")
                         .HasColumnType("text");
 
-                    b.Property<decimal?>("ExternalId")
-                        .HasColumnType("numeric(20,0)");
+                    b.Property<int>("ExternalId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Img")
                         .HasColumnType("text");
@@ -310,11 +306,11 @@ namespace Persistence.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("integer");
 
-                    b.Property<decimal?>("Price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<decimal?>("Quantity")
-                        .HasColumnType("numeric");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
 
                     b.Property<string>("SKU")
                         .HasColumnType("text");

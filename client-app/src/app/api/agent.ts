@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
+import { Integration, NewIntegration } from '../models/integration';
 import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
 import { StatusGroup } from '../models/statusGroup';
@@ -84,11 +85,18 @@ const StatusesGroups ={
     delete: (groupId:number) => request.del(`/statusesgroups/${groupId}`),
 }
 
+const Integrations={
+    list: ()=> request.get<Integration[]>('/integrations'),
+    delete: (id: string) => request.del(`/integrations/${id}`),
+    create: (newIntegration: NewIntegration) => request.post('/integrations',newIntegration),
+}
+
 const agent = {
     Account,
     Orders,
     Statuses,
-    StatusesGroups
+    StatusesGroups,
+    Integrations
 }
 
 export default agent;
