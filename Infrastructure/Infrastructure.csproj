@@ -5,7 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="RestSharp" Version="107.0.1" />
+    <PackageReference Include="WooCommerceNET" Version="0.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Intergrations\Interfaces\" />
   </ItemGroup>
 
 </Project>

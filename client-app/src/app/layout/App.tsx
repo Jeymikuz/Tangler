@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Container, Segment } from 'semantic-ui-react';
 import HomeDashboardPage from '../../features/dashboard/HomeDashboardPage';
+import Integrations from '../../features/dashboard/integrations/Integrations';
 import OrderDetails from '../../features/dashboard/orderDetails/OrderDetails';
 import Orders from '../../features/dashboard/orders/Orders';
 import Statuses from '../../features/dashboard/statuses/Statuses';
@@ -57,6 +58,7 @@ function App() {
                 <PrivateRoute exact path='/dashboard/zamowienia' component={Orders} />
                 <PrivateRoute exact path='/dashboard/zamowienia/:id' component={OrderDetails} />
                 <PrivateRoute exact path='/dashboard/statusy' component={Statuses} />
+                <PrivateRoute exact path='/dashboard/integracje' component={Integrations} />
               </Segment>
             </div>
 

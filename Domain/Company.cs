@@ -16,5 +16,6 @@ namespace Domain
         public virtual ICollection<Status> Statuses { get; set; } = new List<Status>();
         public virtual ICollection<StatusGroup> StatusesGroups { get; set; } = new List<StatusGroup>();
         public bool IsDeleted { get; set; }
+        public virtual ICollection<Integration> Integrations { get; set; } = new List<Integration>();
     }
 }
