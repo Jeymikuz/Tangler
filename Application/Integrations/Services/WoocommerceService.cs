@@ -48,8 +48,8 @@ namespace Application.Integrations.Services
                         ?.ClientKeys.FirstOrDefault(x => x.Key == "private_key")
                         ?.Value;
 
-                    if (string.IsNullOrEmpty(clientKey) || string.IsNullOrEmpty(privateKey))
-                        throw new NullReferenceException("Problem with api keys");
+                   // if (string.IsNullOrEmpty(clientKey) || string.IsNullOrEmpty(privateKey))
+                   //     throw new NullReferenceException("Problem with api keys");
 
                     var rest = new RestAPI(integration.SiteUrl + "/wp-json/wc/v3/", clientKey, privateKey);
                     var wc = new WCObject(rest);

@@ -29,7 +29,7 @@ export default class OrdersStore{
                 this.loadOrders();
             }
         )
-    }
+    }    
 
     createIntegration = async(newIntegration: NewIntegration) => {
         try{

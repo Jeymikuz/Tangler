@@ -4,7 +4,7 @@ import { Integration, NewIntegration } from '../models/integration';
 import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
 import { StatusGroup } from '../models/statusGroup';
-import { User, UserLoginFormValues } from '../models/user';
+import { NewUser, User, UserLoginFormValues, UserSettings } from '../models/user';
 import { store } from '../stores/store';
 
 const sleep = (delay: number) =>{
@@ -61,6 +61,9 @@ const request = {
 const Account ={
     current: () => request.get<User>('/account'),
     login: (user: UserLoginFormValues) => request.post<User>('/account/login',user),
+    getUserList:()=> request.get<UserSettings[]>('/account/getCompanyUsers'),
+    deleteUser:(userName: string) => request.del(`/account/deleteWorker/${userName}`),
+    createUser:(newUser: NewUser) => request.post('/account/addWorker',newUser),
 }
 
 const Orders = {
