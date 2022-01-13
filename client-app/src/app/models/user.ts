@@ -8,3 +8,15 @@ export interface UserLoginFormValues{
     username: string;
     password: string;
 }
+
+export interface NewUser{
+    userName: string;
+    displayName: string;
+    password: string;
+}
+
+export interface UserSettings{
+    id: string;
+    userName: string;
+    displayName: string;
+}

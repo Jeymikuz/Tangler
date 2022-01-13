@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
-import { User, UserLoginFormValues } from "../models/user";
+import { NewUser, User, UserLoginFormValues } from "../models/user";
 import { store } from "./store";
 
 
@@ -16,7 +16,31 @@ export default class UserStore{
     get isLoggedIn(){
         return !!this.user;
     }
+
+    loadUsers = async() =>{
+        try{
+            return await agent.Account.getUserList();
+        }catch(error){
+            console.log(error);
+        }
+    }
     
+    createUser = async(newUser: NewUser) => {
+        try{
+            await agent.Account.createUser(newUser);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    deleteUser =  async (userName: string) =>{
+        try{
+            await agent.Account.deleteUser(userName);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
     logout = () =>{
         store.commonStore.setToken(null);
         window.localStorage.removeItem('jwt');
@@ -48,3 +72,12 @@ export default class UserStore{
         }
     }
 }
+function parseJwt (token: any) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};

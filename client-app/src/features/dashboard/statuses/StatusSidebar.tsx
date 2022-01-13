@@ -23,9 +23,8 @@ export default observer(function StatusSidebar(){
                     key={statuses.id}
                     name={statuses.name}
                      onClick={() => setStatusId(statuses.id)}>
-                         {statuses.index} {statuses.name}
+                         {statuses.name}
                          <Label
-                                
                                 style={{ backgroundColor: statuses.color}}
                                 content='12' />
                      </Menu.Item>

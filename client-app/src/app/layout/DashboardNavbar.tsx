@@ -2,6 +2,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import { Dropdown, Menu } from "semantic-ui-react";
 import { useStore } from "../stores/store";
+import { NavLink } from "react-router-dom";
 
 export default observer(function DashboardNavbar() {
     const { userStore,ordersStore } = useStore();
@@ -12,6 +13,11 @@ export default observer(function DashboardNavbar() {
                 <Menu.Header>
                     <Dropdown text={userStore.user?.displayName}>
                         <Dropdown.Menu direction='left'>
+                            <Dropdown.Item 
+                            text='Użytkownicy'
+                            as={NavLink} 
+                            to='/dashboard/ustawienia/uzytkownicy'
+                            />
                             <Dropdown.Item text='Wyloguj' onClick={() => {
                                 userStore.logout()
                                 ordersStore.reset();
