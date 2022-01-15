@@ -36,29 +36,29 @@ export default observer(function OrderInfoInvoiceEditForm({ order, changeEditMod
                         <List.Item>
                             <List.Description style={descriptionStyle} > Imię i Nazwisko </List.Description>
                             <Form.Group widths={2}>
-                                <FTextInput name='firstName' placeholder='Imię' />
-                                <FTextInput name='lastName' placeholder='Nazwisko' />
+                                <FTextInput name='invoice.firstName' placeholder='Imię' />
+                                <FTextInput name='invoice.lastName' placeholder='Nazwisko' />
                             </Form.Group>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Firma </List.Description>
-                            <FTextInput name='companyName' placeholder='Nazwa Firmy' />
+                            <FTextInput name='invoice.name' placeholder='Nazwa Firmy' />
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Adres</List.Description>
-                            <FTextInput name='deliveryAddress.street' placeholder='Ulica' />
+                            <FTextInput name='invoice.address.street' placeholder='Ulica' />
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
-                            <FTextInput name='deliveryAddress.zipcode' placeholder='Kod Pocztowy' />
+                            <FTextInput name='invoice.address.zipcode' placeholder='Kod Pocztowy' />
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Miasto</List.Description>
-                            <FTextInput name='deliveryAddress.city' placeholder='Miasto' />
+                            <FTextInput name='invoice.address.city' placeholder='Miasto' />
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >NIP</List.Description>
-                            <FTextInput name='invoice.nipNumber' placeholder='NIP' />
+                            <FTextInput name='invoice.nip' placeholder='NIP' />
                         </List.Item>
                     </List>
                 </Form>

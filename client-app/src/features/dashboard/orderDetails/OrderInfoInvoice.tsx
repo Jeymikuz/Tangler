@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { Button, Header, Icon, List } from "semantic-ui-react";
 import { Order } from "../../../app/models/order";
+import { useStore } from "../../../app/stores/store";
 import OrderInfoInvoiceEditForm from "./edit/OrderInfoInvoiceEditForm";
 
 interface Props {
@@ -12,6 +13,8 @@ interface Props {
 
 
 export default observer(function OrderInfoInvoice({ order, descriptionStyle }: Props) {
+
+    const {ordersStore} = useStore();
 
     const [editMode, setEditMode] = useState(false);
 
@@ -40,7 +43,7 @@ export default observer(function OrderInfoInvoice({ order, descriptionStyle }: P
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} > Firma </List.Description>
-                            <List.Header>Ehh</List.Header>
+                            <List.Header>{order.invoice?.name}</List.Header>
                         </List.Item>
                         <List.Item>
                             <List.Description style={descriptionStyle} >Adres</List.Description>
@@ -65,6 +68,17 @@ export default observer(function OrderInfoInvoice({ order, descriptionStyle }: P
                             <List.Header>{order.invoice?.nip}</List.Header>
                         </List.Item>
                     </List>
+                    {order.invoice?.isCreated ? (
+                        <>
+                        <Button content='Pobierz fakturę' onClick={()=>{
+                            ordersStore.getInvoice(order.id.toString());
+                        }} />
+                        </>
+                    ): (
+                        <>
+                        <Button content='Utwórz fakturę' />
+                        </>
+                    )}
                 </>
             )}
         </>

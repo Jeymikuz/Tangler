@@ -58,6 +58,21 @@ const request = {
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody),
 }
 
+const Invoices = {
+    get: (orderId: string) => axios({
+        url: `/invoices/${orderId}`,
+        method: 'GET',
+        responseType: 'blob', // important
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Faktura.pdf');
+        document.body.appendChild(link);
+        link.click();
+      }),
+}
+
 const Account ={
     current: () => request.get<User>('/account'),
     login: (user: UserLoginFormValues) => request.post<User>('/account/login',user),
@@ -99,7 +114,8 @@ const agent = {
     Orders,
     Statuses,
     StatusesGroups,
-    Integrations
+    Integrations,
+    Invoices
 }
 
 export default agent;

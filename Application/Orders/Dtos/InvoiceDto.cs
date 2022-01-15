@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Orders.Dtos
 {
-    public record InvoiceDto(string id, string firstName, string lastName, OrderAddressDto address, string nip)
+    public record InvoiceDto(string id, string firstName, string lastName, OrderAddressDto address, string nip, string name, string isCreated)
     {
     };
 }

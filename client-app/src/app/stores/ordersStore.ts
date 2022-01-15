@@ -31,6 +31,14 @@ export default class OrdersStore{
         )
     }    
 
+    getInvoice = async(orderId: string) =>{
+        try{
+            await agent.Invoices.get(orderId);
+        }catch(error){
+
+        }
+    }
+
     createIntegration = async(newIntegration: NewIntegration) => {
         try{
             await agent.Integrations.create(newIntegration);

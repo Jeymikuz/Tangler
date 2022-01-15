@@ -1,0 +1,31 @@
+[33mcommit 1a9a27b4551dc21756a38ae590e6d7d3c2b202bf[m[33m ([m[1;36mHEAD -> [m[1;32mtask/#3[m[33m, [m[1;31morigin/task/#3[m[33m)[m
+Author: Piotr Marszałek <marszalek.piotr1@gmail.com>
+Date:   Sat Jan 15 20:23:34 2022 +0100
+
+    Revert "#3 Added APi and Front Invoices"
+    
+    This reverts commit 6e1c118ba99953b0c1fbc1c4ba50f8f56d763619.
+
+[33mcommit 6e1c118ba99953b0c1fbc1c4ba50f8f56d763619[m
+Author: Piotr Marszałek <marszalek.piotr1@gmail.com>
+Date:   Sat Jan 15 20:20:30 2022 +0100
+
+    #3 Added APi and Front Invoices
+
+[33mcommit 156bd1d8a49a0e5771b99bbef9458ad60447489b[m
+Author: Piotr Marszałek <marszalek.piotr1@gmail.com>
+Date:   Sat Jan 15 16:01:57 2022 +0100
+
+    #3 Added simple tests
+
+[33mcommit 6025824e0c0b7bd5735b58ba77de7813d988b922[m
+Author: Piotr Marszałek <marszalek.piotr1@gmail.com>
+Date:   Thu Jan 13 21:54:06 2022 +0100
+
+    Added User Management
+
+[33mcommit 318c99762afaaa2ea151586565a5013efbf987cb[m
+Author: Piotr Marszałek <marszalek.piotr1@gmail.com>
+Date:   Tue Jan 11 20:10:18 2022 +0100
+
+    Added Woocommerce Integration

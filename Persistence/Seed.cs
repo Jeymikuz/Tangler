@@ -144,6 +144,7 @@ namespace Persistence
                         FirstName = "Peter",
                         LastName = "Quill",
                         NIP = "5331174794",
+                        Name = "Bob Budowniczy sp. z o.o."
                     },
                     ClientLogin = "StarLord2137",
                     PickUpPoint = new PickUpPoint()

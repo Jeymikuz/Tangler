@@ -30,13 +30,14 @@ namespace Application.Orders.List
         public async Task<Result<List<OrderDto>>> Handle(ListQuery request, CancellationToken cancellationToken)
         {
             var companie = await _context.Companies.Include(x => x.Orders).ThenInclude(o => o.Products)
-                                                    .Include(x => x.Orders).ThenInclude(o => o.InvoiceAddress)
                                                     .Include(x => x.Orders).ThenInclude(o => o.DeliveryAddress)
                                                     .Include(x => x.Orders).ThenInclude(o => o.Status)
+                                                    .Include(x => x.Orders).ThenInclude(o => o.Invoice).ThenInclude(x=>x.Address)
                                                     .Include(s => s.Statuses)
                                                     .Include(s => s.StatusesGroups).ThenInclude(x=>x.Statuses)
                                                     .SingleOrDefaultAsync(x => x.Users.Any(x => x.UserName == _userAccessor.GetUsername()));
-            if (companie == null) return Result<List<OrderDto>>.Failure("Companie not found");
+
+            if (companie == null) return Result<List<OrderDto>>.Failure("Company not found");
 
             if (request.Id == 0)
             {

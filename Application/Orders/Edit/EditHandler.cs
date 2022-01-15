@@ -86,6 +86,7 @@ namespace Application.Orders.Edit
             currentOrder.InvoiceAddress.City = editedOrder.InvoiceAddress.City;
             currentOrder.InvoiceAddress.Street = editedOrder.InvoiceAddress.Street;
             currentOrder.InvoiceAddress.ZipCode = editedOrder.InvoiceAddress.ZipCode;
+            currentOrder.Invoice.Name = editedOrder.Invoice.Name;
         }
     }
 }
