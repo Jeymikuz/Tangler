@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { Integration, NewIntegration } from '../models/integration';
+import { Invoice } from '../models/invoice';
 import { NewOrder, Order } from '../models/order';
 import { Status } from '../models/status';
 import { StatusGroup } from '../models/statusGroup';
@@ -71,6 +72,8 @@ const Invoices = {
         document.body.appendChild(link);
         link.click();
       }),
+      create: (orderId: string) => request.post(`/invoices/${orderId}`,{}),
+      list: () => request.get<Invoice[]>('/invoices'),
 }
 
 const Account ={

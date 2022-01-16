@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Documents.Invoices.GenerateInvoice;
 using Application.Documents.Invoices.Get;
+using Application.Documents.Invoices.List;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -38,6 +39,12 @@ namespace API.Controllers
             //Response.Headers.Add("Content-Disposition", cd.ToString());
 
             return File(data, "application/pdf");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetInvoicesList()
+        {
+            return HandleResult(await Mediator.Send(new GetInvoicesListQuery()));
         }
     }
 }

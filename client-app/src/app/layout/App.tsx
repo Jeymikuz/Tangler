@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Container, Segment } from 'semantic-ui-react';
+import Documents from '../../features/dashboard/documents/Documents';
 import HomeDashboardPage from '../../features/dashboard/HomeDashboardPage';
 import Integrations from '../../features/dashboard/integrations/Integrations';
 import OrderDetails from '../../features/dashboard/orderDetails/OrderDetails';
@@ -61,6 +62,7 @@ function App() {
                 <PrivateRoute exact path='/dashboard/statusy' component={Statuses} />
                 <PrivateRoute exact path='/dashboard/integracje' component={Integrations} />
                 <PrivateRoute exact path='/dashboard/ustawienia/uzytkownicy' component={UserSettings} />
+                <PrivateRoute exact path='/dashboard/dokumenty' component={Documents} />
               </Segment>
             </div>
 
