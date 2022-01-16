@@ -51,7 +51,7 @@ export default observer(function OrderInfoDelivery({ order }: Props) {
                         <List.Item>
                             <List.Description style={descriptionStyle} >Kod Pocztowy</List.Description>
                             {order.deliveryAddress && (
-                                <List.Header>{order.deliveryAddress.zipcode}</List.Header>
+                                <List.Header>{order.deliveryAddress.zipCode}</List.Header>
                             )}
                         </List.Item>
                         <List.Item>

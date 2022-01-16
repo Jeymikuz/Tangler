@@ -82,7 +82,13 @@ namespace Persistence
                 {
                     Name = "Avengers",
                     NIP = "1234567890",
-                    IsDeleted = false
+                    IsDeleted = false,
+                    Address = new Address()
+                    {
+                        City = "Wrocław",
+                        Street = "Legnicka 25b",
+                        ZipCode = "50-152"
+                    }
                 };
 
                 company1.Statuses.Add(status1_1);

@@ -1,6 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
+import { Company } from "../models/company";
 import { Integration, NewIntegration } from "../models/integration";
 import { NewOrder, Order } from "../models/order";
 import { OrderProduct } from "../models/orderProduct";
@@ -28,6 +29,14 @@ export default class OrdersStore {
         this.loadOrders();
       }
     );
+  }
+
+  editCompanyInfo = async (company: Company) =>{
+    try{
+      await agent.Company.edit(company);
+    }catch(error){
+      
+    }
   }
 
   getInvoicesList = async () => {

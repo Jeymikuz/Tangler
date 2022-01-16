@@ -8,7 +8,8 @@ import HomeDashboardPage from '../../features/dashboard/HomeDashboardPage';
 import Integrations from '../../features/dashboard/integrations/Integrations';
 import OrderDetails from '../../features/dashboard/orderDetails/OrderDetails';
 import Orders from '../../features/dashboard/orders/Orders';
-import UserSettings from '../../features/dashboard/settings/userSettings/UserSettings';
+import Settings from '../../features/dashboard/settings/Settings';
+import UserSettings from '../../features/dashboard/settings/usersSettings/UserSettings';
 import Statuses from '../../features/dashboard/statuses/Statuses';
 import HomePage from '../../features/home/HomePage';
 import UserLogin from '../../features/user/UserLogin';
@@ -63,6 +64,7 @@ function App() {
                 <PrivateRoute exact path='/dashboard/integracje' component={Integrations} />
                 <PrivateRoute exact path='/dashboard/ustawienia/uzytkownicy' component={UserSettings} />
                 <PrivateRoute exact path='/dashboard/dokumenty' component={Documents} />
+                <PrivateRoute exact path='/dashboard/ustawienia' component={Settings} />
               </Segment>
             </div>
 

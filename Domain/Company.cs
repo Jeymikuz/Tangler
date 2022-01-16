@@ -11,6 +11,7 @@ namespace Domain
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string NIP { get; set; }
+        public Address Address { get; set; }
         public virtual ICollection<AppUser> Users { get; set; } = new List<AppUser>();
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
         public virtual ICollection<Status> Statuses { get; set; } = new List<Status>();

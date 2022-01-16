@@ -76,7 +76,7 @@ export default observer(function OrderInfoInvoice({
                 Kod Pocztowy
               </List.Description>
               {order.invoice?.address && (
-                <List.Header>{order.invoice?.address!.zipcode}</List.Header>
+                <List.Header>{order.invoice?.address!.zipCode}</List.Header>
               )}
             </List.Item>
             <List.Item>

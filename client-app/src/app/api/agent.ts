@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
+import { Company } from '../models/company';
 import { Integration, NewIntegration } from '../models/integration';
 import { Invoice } from '../models/invoice';
 import { NewOrder, Order } from '../models/order';
@@ -57,6 +58,11 @@ const request = {
     post: <T> (url: string, body: {}) => axios.post<T>(url,body).then(responseBody),
     put: <T> (url: string, body: {}) => axios.put<T>(url,body).then(responseBody),
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody),
+}
+
+const Companies = {
+    get: () => request.get<Company>('/company'),
+    edit: (company: Company) => request.put('/company',company),
 }
 
 const Invoices = {
@@ -118,7 +124,8 @@ const agent = {
     Statuses,
     StatusesGroups,
     Integrations,
-    Invoices
+    Invoices,
+    Company: Companies
 }
 
 export default agent;
