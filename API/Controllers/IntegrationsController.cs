@@ -46,7 +46,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetListOfIntegrations()
         {
-            return HandleResult(await Mediator.Send(new GetListOfIntegrationsQuery()));
+            return HandleResult(await Mediator.Send(new GetIntegrationsListQuery()));
         }
 
         [HttpDelete("{id}")]

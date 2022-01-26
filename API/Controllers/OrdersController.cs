@@ -15,25 +15,25 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder(OrderDto orderDto)
         {
-            return HandleResult(await Mediator.Send(new CreateCommand { orderDto=orderDto}));
+            return HandleResult(await Mediator.Send(new CreateOrderCommand { orderDto=orderDto}));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> OrderDetailes(int id)
         {
-            return HandleResult(await Mediator.Send(new DetailesQuery { Id = id }));
+            return HandleResult(await Mediator.Send(new GetOrderDetailsQuery { Id = id }));
         }
 
         [HttpGet]
         public async Task<IActionResult> OrdersList([FromQuery]int statusId)
         {
-            return HandleResult(await Mediator.Send(new ListQuery { Id = statusId }));
+            return HandleResult(await Mediator.Send(new GetOrdersListQuery { Id = statusId }));
         }
 
         [HttpPut]
         public async Task<IActionResult> EditOrder(OrderDto order)
          {
-            return HandleResult(await Mediator.Send(new EditCommand { Order = order}));
+            return HandleResult(await Mediator.Send(new EditOrderCommand { Order = order}));
         }
 
         [HttpPost("updateStatus")]

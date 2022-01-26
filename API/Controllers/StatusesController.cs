@@ -14,11 +14,11 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStatuses()
         {
-            return HandleResult(await Mediator.Send(new ListQuery()));
+            return HandleResult(await Mediator.Send(new GetStatusesListQuery()));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStatus(CreateCommand command)
+        public async Task<IActionResult> CreateStatus(CreateStatusCommand command)
         {
             return HandleResult(await Mediator.Send(command));
         }
@@ -26,11 +26,11 @@ namespace API.Controllers
         [HttpPut]
         public async Task<IActionResult> EditStatus(Status status)
         {
-            return HandleResult(await Mediator.Send(new EditCommand {Status = status}));
+            return HandleResult(await Mediator.Send(new EditStatusCommand {Status = status}));
         }
 
         [HttpPut("indexes")]
-        public async Task<IActionResult> EditStatusesIndex(EditIndexCommand dto)
+        public async Task<IActionResult> EditStatusesIndex(EditStatusIndexCommand dto)
         {
             return HandleResult(await Mediator.Send(dto));
         }
@@ -38,7 +38,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStatus(int id)
         {
-            return HandleResult(await Mediator.Send(new DeleteCommand { Id = id }));
+            return HandleResult(await Mediator.Send(new DeleteStatusCommand { Id = id }));
         }
     }
 }

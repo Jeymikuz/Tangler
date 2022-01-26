@@ -13,27 +13,27 @@ namespace API.Controllers
         [HttpPut]
         public async Task<IActionResult> Edit([FromBody]CompanyEditInfoDto dto)
         {
-            return HandleResult(await Mediator.Send(new EditInfoCommand(){Dto = dto}));
+            return HandleResult(await Mediator.Send(new EditCompanyCommand(){Dto = dto}));
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Details()
         {
-            return HandleResult(await Mediator.Send(new DetailsQuery()));
+            return HandleResult(await Mediator.Send(new GetCompanyDetailsQuery()));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateDto companyDto)
+        public async Task<IActionResult> Create(CreateCompanyDto companyDto)
         {
-            return HandleResult(await Mediator.Send(new CreateCommand { CompanyDto = companyDto }));
+            return HandleResult(await Mediator.Send(new CreateCompanyCommand { CompanyDto = companyDto }));
         }
 
         [HttpDelete]
 
         public async Task<IActionResult> Delete(string id)
         {
-            return HandleResult(await Mediator.Send(new DeleteCommand { Id = id }));
+            return HandleResult(await Mediator.Send(new DeleteCompanyCommand { Id = id }));
         }
     }
 }

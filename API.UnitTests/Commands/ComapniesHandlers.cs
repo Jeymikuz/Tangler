@@ -36,14 +36,14 @@ namespace API.UnitTests.Commands
             var fixture = new Fixture();
 
 
-            var createDto = fixture.Create<CreateDto>();
+            var createDto = fixture.Create<CreateCompanyDto>();
 
-            var command = new CreateCommand()
+            var command = new CreateCompanyCommand()
             {
                 CompanyDto = createDto
             };
 
-            var handler = new CreateHandler(dbContext, userManager);
+            var handler = new CreateCompanyHandler(dbContext, userManager);
 
             //act 
 

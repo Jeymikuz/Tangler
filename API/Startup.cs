@@ -37,7 +37,7 @@ namespace API
                 opt.Filters.Add(new AuthorizeFilter(policy));
             }).AddFluentValidation(config =>
             {
-                config.RegisterValidatorsFromAssemblyContaining<DeleteCommand>();
+                config.RegisterValidatorsFromAssemblyContaining<DeleteCompanyCommand>();
             });
 
             services.AddApplicationServices(Configuration);

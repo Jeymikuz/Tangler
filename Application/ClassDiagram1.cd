@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Application.Companies.Create.CreateCompanyCommand" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\Create\CreateCompanyCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Application.Companies.Create.CreateCompanyHandler" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\Create\CreateCompanyHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Companies.Delete.DeleteCompanyCommand" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\Delete\DeleteCompanyCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Application.Companies.Delete.DeleteCompanyHandler" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\Delete\DeleteCompanyHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Companies.Detailes.GetCompanyDetailsHandler" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Companies\Details\GetCompanyDetailsHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Companies.Detailes.GetCompanyDetailsQuery" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\Details\GetCompanyDetailsQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Application.Companies.EditInfo.EditCompanyCommand" BaseTypeListCollapsed="true">
+    <Position X="19" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Companies\EditInfo\EditCompanyCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Application.Companies.EditInfo.EditCompanyHandler" BaseTypeListCollapsed="true">
+    <Position X="19" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Companies\EditInfo\EditCompanyHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Core.MappingProfile" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\MappingProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application.Core.Result&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAQAAAAAAAAAAAgAAAACAAAAgAAAAAAA=</HashCode>
+      <FileName>Core\Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application.Documents.Invoices.GenerateInvoice.CreateInvoiceCommand" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\GenerateInvoice\CreateInvoiceCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.GenerateInvoice.CreateInvoiceHandler" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\GenerateInvoice\CreateInvoiceHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.Get.GetInvoiceHandler" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\Get\GetInvoiceHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.Get.GetInvoiceQuery" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\Get\GetInvoiceQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.List.GetInvoicesListHandler" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\List\GetInvoicesListHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.List.GetInvoicesListQuery" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\List\GetInvoicesListQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.Models.InvoiceAddress">
+    <Position X="10.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAAAAAIgAAAAAAAAAAAAAAAAAIAJAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\Models\InvoiceAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application.Documents.Invoices.Models.InvoiceModel">
+    <Position X="8" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAgCCAAAgAAAAAAAAAAAAAAAAAAAAABIAA=</HashCode>
+      <FileName>Documents\Invoices\Models\InvoiceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application.Documents.Invoices.Models.InvoiceOrderItem">
+    <Position X="14.75" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\Models\InvoiceOrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Application.Documents.Invoices.InvoiceDocument" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAgAACAEAAAAABAAAAAAAAAAAAAAAAAQAgAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\InvoiceDocument.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Documents.Invoices.AddressComponent" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAEAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Invoices\InvoiceDocument.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Services.WoocommerceService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAIAgAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Services\WoocommerceService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Create.CreateWoocommerceCommand" BaseTypeListCollapsed="true">
+    <Position X="1" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Create\CreateWoocommerceCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Create.CreateWoocommerceHandler" BaseTypeListCollapsed="true">
+    <Position X="1" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Create\CreateWoocommerceHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Delete.DeleteIntegrationCommand" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Delete\DeleteIntegrationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Delete.DeleteIntegrationHandler" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Delete\DeleteIntegrationHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.List.GetIntegrationsListHandler" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\List\GetIntegrationsListHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.List.GetIntegrationsListQuery" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\List\GetIntegrationsListQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.GetLatestOrdersCommand" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\GetLatestOrdersCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.GetLatestOrdersHandler" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\GetLatestOrdersHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.Create.CreateOrderCommand" BaseTypeListCollapsed="true">
+    <Position X="29" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Orders\Create\CreateOrderCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Orders.Create.CreateOrderHandler" BaseTypeListCollapsed="true">
+    <Position X="29" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\Create\CreateOrderHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.Detailes.GetOrderDetailsHandler" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\Details\GetOrderDetailsHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.Detailes.GetOrderDetailsQuery" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\Details\GetOrderDetailsQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Orders.Edit.EditOrderCommand" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\Edit\EditOrderCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Orders.Edit.EditOrderHandler" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAABAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\Edit\EditOrderHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.237" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.EditProduct.EditOrderProductCommand" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\EditProduct\EditOrderProductCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.174" />
+  </Class>
+  <Class Name="Application.Orders.EditProduct.EditOrderProductHandler" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\EditProduct\EditOrderProductHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.List.GetOrdersListHandler" BaseTypeListCollapsed="true">
+    <Position X="33.5" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\List\GetOrdersListHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Orders.List.GetOrdersListQuery" BaseTypeListCollapsed="true">
+    <Position X="33.5" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\List\GetOrdersListQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.127" />
+  </Class>
+  <Class Name="Application.Orders.UpdateStatus.UpdateOrderStatusCommand" BaseTypeListCollapsed="true">
+    <Position X="26" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\UpdateStatus\UpdateOrderStatusCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Orders.UpdateStatus.UpdateOrderStatusHandler" BaseTypeListCollapsed="true">
+    <Position X="26" Y="17" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Orders\UpdateStatus\UpdateOrderStatusHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.Create.CreateStatusCommand" BaseTypeListCollapsed="true">
+    <Position X="20" Y="15.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statuses\Create\CreateStatusCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Statuses.Create.CreateStatusHandler" BaseTypeListCollapsed="true">
+    <Position X="20" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Statuses\Create\CreateStatusHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.Delete.DeleteStatusCommand" BaseTypeListCollapsed="true">
+    <Position X="18" Y="15.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statuses\Delete\DeleteStatusCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Statuses.Delete.DeleteStatusHandler" BaseTypeListCollapsed="true">
+    <Position X="18" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Statuses\Delete\DeleteStatusHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.Edit.EditStatusCommand" BaseTypeListCollapsed="true">
+    <Position X="22" Y="15.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statuses\Edit\EditStatusCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Statuses.Edit.EditStatusHandler" BaseTypeListCollapsed="true">
+    <Position X="22" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Statuses\Edit\EditStatusHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.EditIndex.EditStatusIndexCommand" BaseTypeListCollapsed="true">
+    <Position X="24" Y="15.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statuses\EditIndex\EditStatusIndexCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Application.Statuses.EditIndex.EditStatusIndexHandler" BaseTypeListCollapsed="true">
+    <Position X="24" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAAAA=</HashCode>
+      <FileName>Statuses\EditIndex\EditStatusIndexHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.List.GetStatusesListHandler" BaseTypeListCollapsed="true">
+    <Position X="28.25" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Statuses\List\GetStatusesListHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Statuses.List.GetStatusesListQuery" BaseTypeListCollapsed="true">
+    <Position X="28.25" Y="15.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statuses\List\GetStatusesListQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Create.CreateStatusGroupCommand" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="17.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Create\CreateStatusGroupCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Create.CreateStatusGroupHandler" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="19" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Create\CreateStatusGroupHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Delete.DeleteStatusGroupCommand" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="17.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Delete\DeleteStatusGroupCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Delete.DeleteStatusGroupHandler" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="19" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Delete\DeleteStatusGroupHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Edit.EditStatusGroupCommand" BaseTypeListCollapsed="true">
+    <Position X="3" Y="17.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Edit\EditStatusGroupCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.StatusesGroups.Edit.EditStatusGroupHandler" BaseTypeListCollapsed="true">
+    <Position X="3" Y="19" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>StatusesGroups\Edit\EditStatusGroupHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Remove.RemoveInvoiceHandler">
+    <Position X="14" Y="13.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Remove\RemoveInvoiceHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Remove.RemoveInvoiceCommand">
+    <Position X="14" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Remove\RemoveInvoiceCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Edit.EditIntegrationHandler">
+    <Position X="8" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAACAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Edit\EditIntegrationHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Integrations.Woocommerce.Edit.EditIntegrationCommand">
+    <Position X="8" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Integrations\Woocommerce\Edit\EditIntegrationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Application.Interfaces.IManageOrders&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IManageOrders.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Application.Interfaces.IUserAccessor" Collapsed="true">
+    <Position X="12.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -44,7 +44,7 @@ namespace API.Extensions
 
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
-            services.AddMediatR(typeof(CreateHandler).Assembly);
+            services.AddMediatR(typeof(CreateCompanyHandler).Assembly);
 
             services.AddTransient<IManageOrders<WoocommerceService>, WoocommerceService>();
 
