@@ -51,7 +51,7 @@ namespace Application.Integrations.Services
                    // if (string.IsNullOrEmpty(clientKey) || string.IsNullOrEmpty(privateKey))
                    //     throw new NullReferenceException("Problem with api keys");
 
-                    var rest = new RestAPI(integration.SiteUrl + "/wp-json/wc/v3/", clientKey, privateKey);
+                    var rest = new RestAPI(integration.SiteUrl + "/wp-json/wc/v3/", clientKey, privateKey, jsonDeserializeFilter: trimstr);
                     var wc = new WCObject(rest);
 
                     var orders = new List<WooCommerceNET.WooCommerce.v3.Order>();
@@ -129,6 +129,11 @@ namespace Application.Integrations.Services
         public Task<Order> UpdateOrder(Order order)
         {
             throw new NotImplementedException();
+        }
+
+        string trimstr(string json)
+        {
+            return json.Trim(new char[] { '\uFEFF', '\u200B' });
         }
     }
 }

@@ -18,11 +18,12 @@ using Persistence;
 
 namespace API.UnitTests.Commands
 {
-    public class ComapniesHandlers
+    public class CreateCompaniesHandlerTests
     {
         [Test]
-        public async Task Should_Create_New_Company()
+        public async Task Should_Create_New_Company_Successful()
         {
+            var fixture = new Fixture();
             var options = new DbContextOptionsBuilder<DataContext>().UseInMemoryDatabase(databaseName: "DB").Options;
 
             var dbContext = new DataContext(options);
@@ -30,11 +31,6 @@ namespace API.UnitTests.Commands
             var users = new List<AppUser>();
 
             var userManager = MockUserManager(users).Object;
-
-            var mediator = new Mock<IMediator>();
-
-            var fixture = new Fixture();
-
 
             var createDto = fixture.Create<CreateCompanyDto>();
 

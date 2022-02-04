@@ -30,9 +30,9 @@ export default observer(function DashboardSidebar() {
                         <Menu.Item as={NavLink} to='/dashboard/ustawienia' name='ustawienia'>Ustawienia</Menu.Item>
                     </Menu.Menu>
                 </Menu.Item>
-                <Menu.Item>
+                {/* <Menu.Item>
                     <Menu.Header><Icon name='clone' />Produkty</Menu.Header>
-                </Menu.Item>
+                </Menu.Item> */}
             </Menu>
         </div>
     )

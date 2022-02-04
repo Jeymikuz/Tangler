@@ -28,7 +28,10 @@ export default observer(function HomeNavBar() {
                     )
                         :
                         (
-                            <Menu.Item position='right' as={NavLink} to='/logowanie' >Zaloguj się</Menu.Item>
+                            <>
+                            <Menu.Item position='right' as={NavLink} to='/rejestracja' >Zarejestruj się</Menu.Item>
+                            <Menu.Item as={NavLink} to='/logowanie' >Zaloguj się</Menu.Item>
+                            </>
                         )}
                 </Container>
             </Menu>

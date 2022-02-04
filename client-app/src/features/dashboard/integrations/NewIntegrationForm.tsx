@@ -57,7 +57,7 @@ export default observer(function NewIntegrationForm({setOpen}:Props){
                     Dodaj integracje
                         </Header>
                     <FTextInput name='privateName' placeholder='Nazwa Integracji' />
-                    <FSelectInput name='groupId' placeholder='Wybierz grupę statusów' options={groupsOptions} />
+                    <FSelectInput name='groupId' placeholder='Wybierz typ integracji' options={groupsOptions} />
                     {newIntegration.type === IntegrationType.Woocommerce && (
                         <>
                         <FTextInput name='siteUrl' placeholder='Url strony' />

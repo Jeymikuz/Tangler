@@ -5,6 +5,7 @@ import { Button, Header } from "semantic-ui-react";
 import FTextInput from '../../../../app/common/form/FTextInput';
 import { useStore } from '../../../../app/stores/store';
 import { NewUser } from '../../../../app/models/user';
+import * as Yup from 'yup';
 
 interface Props{
     setOpen: (isOpen: boolean) => void;
@@ -20,6 +21,15 @@ export default observer(function NewUserForm({setOpen}:Props){
         userName: '',
     } 
 
+    const validationSchema = Yup.object({
+        userName: Yup.string().required('Należy podać nazwę użytkownika'),
+        password: Yup.string().required('Należy podać hasło').matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            "Musi zawierać 8 znaków, Jedną dużą literę, Jedną małą literę, Jedną cyfre i Jeden znak specjalny"
+          ),
+        displayName: Yup.string().required('Nazwa użytkownika jest wymagana')
+    })
+
     return(
         <Formik
             initialValues={newUser}
@@ -27,6 +37,7 @@ export default observer(function NewUserForm({setOpen}:Props){
                 userStore.createUser(values).then(()=> setOpen(false))
             }
             }
+            validationSchema={validationSchema}
         >
             {({ handleSubmit, isSubmitting, errors }) => (
                 <Form className='ui form'

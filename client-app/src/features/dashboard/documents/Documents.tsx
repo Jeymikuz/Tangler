@@ -7,7 +7,7 @@ export default observer(function Document(){
     
     const panes = [
         {menuItem: 'Faktury', render: () => <InvoicesList /> },
-        {menuItem: 'Paragony', render: () => <></> },
+        //{menuItem: 'Paragony', render: () => <></> },
     ]
 
     return(

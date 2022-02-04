@@ -41,10 +41,6 @@ export default observer(function OrderInfoDeliveryEditForm({ order, changeEditMo
                             </Form.Group>
                         </List.Item>
                         <List.Item>
-                            <List.Description style={descriptionStyle} > Firma </List.Description>
-                            <FTextInput name='companyName' placeholder='Nazwa Firmy' />
-                        </List.Item>
-                        <List.Item>
                             <List.Description style={descriptionStyle} >Adres</List.Description>
                             <FTextInput name='deliveryAddress.street' placeholder='Ulica' />
                         </List.Item>

@@ -18,12 +18,10 @@ export default observer(function OrderInfoInvoice({
 
   const [editMode, setEditMode] = useState(false);
 
-  const isCreated: boolean = order.invoice!.isCreated;
-
   function changeEditMode(isEdited: boolean) {
     setEditMode(isEdited);
   }
-
+  
   return (
     <>
       {editMode ? (
@@ -92,25 +90,20 @@ export default observer(function OrderInfoInvoice({
               <List.Header>{order.invoice?.nip}</List.Header>
             </List.Item>
           </List>
-          Jest stworzeone {isCreated}
-          {isCreated ? (
-            <>
+          {order.invoice?.isCreated ? (
               <Button
                 content="Pobierz fakturę"
                 onClick={() => {
                   ordersStore.getInvoice(order.id.toString());
                 }}
               />
-            </>
           ) : (
-            <>
               <Button
                 content="Utwórz fakturę"
                 onClick={() => {
                   ordersStore.createInvoice(order.id.toString());
                 }}
               />
-            </>
           )}
         </>
       )}

@@ -26,7 +26,7 @@ export default observer(function StatusSidebar(){
                          {statuses.name}
                          <Label
                                 style={{ backgroundColor: statuses.color}}
-                                content='12' />
+                                content='' />
                      </Menu.Item>
           ))
       }))

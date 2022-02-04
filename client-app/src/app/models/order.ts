@@ -29,5 +29,5 @@ export interface NewOrder{
     lastName: string | undefined;
     phoneNumber: string | undefined;
     email: string | undefined;
-    statusId: number
+    statusId: string
 }

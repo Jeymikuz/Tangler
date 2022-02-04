@@ -117,11 +117,27 @@ namespace Persistence
                 {
                     new OrderProduct
                     {
-                        Name="Benatar",
+                        Name="Koszulka",
                         Description= "",
                         EAN = "5982714743285",
                         Quantity = 1,
-                        SKU="S01"
+                        SKU="S01",
+                        Weight = 0.1,
+                        Price = 24.99M,
+                    }
+                };
+
+                var products2 = new List<OrderProduct>
+                {
+                    new OrderProduct
+                    {
+                        Name="Spodnie",
+                        Description= "",
+                        EAN = "5982714743281",
+                        Quantity = 1,
+                        SKU="S01",
+                        Weight = 0.2,
+                        Price = 74.99M,
                     }
                 };
 
@@ -167,7 +183,50 @@ namespace Persistence
                     OrderedAt = DateTime.Now.AddMinutes(-15),
                 };
 
+                var order2 = new Order
+                {
+                    FirstName = "Jan",
+                    LastName = "Kowalski",
+                    PhoneNumber = "+48 997 998 999",
+                    Email = "gotg@gmail.com",
+                    PaymentMethod = "Przelew Bankowy",
+                    DeliveryMethod = "Kurier Inpost",
+                    DeliveryAddress = address,
+                    InvoiceAddress = address,
+                    ClientMessage = "",
+                    Status = status1_1,
+                    Products = products2,
+                    DeliveryPrice = 9.99m,
+                    Invoice = new Invoice()
+                    {
+                        Address = new Address()
+                        {
+                            City = "Wrocław",
+                            Street = "Grzybowa 10b",
+                            ZipCode = "55-420",
+                        },
+                        FirstName = "Peter",
+                        LastName = "Quill",
+                        NIP = "5331174794",
+                        Name = "Bob Budowniczy sp. z o.o."
+                    },
+                    ClientLogin = "StarLord2137",
+                    PickUpPoint = new PickUpPoint()
+                    {
+                        Name = "Paczkomaty 24/7",
+                        Address = new Address()
+                        {
+                            City = "Wrocław",
+                            Street = "Fifirafa 21b",
+                            ZipCode = "21-3769"
+                        }
+                    },
+                    CreatedAt = DateTime.Now,
+                    OrderedAt = DateTime.Now.AddMinutes(-15),
+                };
+
                 company1.Orders.Add(order);
+                company1.Orders.Add(order2);
 
                 var woocommerceIntegration = new Integration()
                 {

@@ -97,7 +97,7 @@ export default observer(function OrderDetails() {
                       
                 )}
                 <Header.Subheader>
-                    {order.orderedAt}
+                    0{order.orderedAt}
                 </Header.Subheader>
             </Header>
             <Segment style={{ margin: 50, marginTop: 10 }} >

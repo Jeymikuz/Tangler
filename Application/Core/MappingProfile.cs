@@ -1,4 +1,5 @@
-﻿using Application.Orders.Dtos;
+﻿using API.DTOs;
+using Application.Orders.Dtos;
 using AutoMapper;
 using Domain;
 using Persistence;
@@ -24,7 +25,10 @@ namespace Application.Core
                 .ForMember(x => x.invoice, a => a.MapFrom(c => c.Invoice))
                 .ForMember(x => x.pickUpPoint, a => a.MapFrom(c => c.PickUpPoint))
                 .ForMember(x => x.orderedAt, a => a.MapFrom(b => b.OrderedAt.ToString("dd-MM-yyyy hh:mm")));
-                
+
+            CreateMap<NewOrderDto, Order>()
+                .ForMember(x => x.Status, a => a.Ignore());
+            
 
             CreateMap<Invoice, InvoiceDto>()
                 .ForMember(x => x.id, a => a.MapFrom(b => b.Id))

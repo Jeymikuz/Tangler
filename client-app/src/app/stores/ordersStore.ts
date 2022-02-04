@@ -268,6 +268,8 @@ export default class OrdersStore {
   addOrder = async (order: NewOrder) => {
     try {
       this.setLoading(true);
+      console.log(order);
+      console.log('es');
       const result = await agent.Orders.add(order);
       runInAction(() => {
         this.orderRegistry.set(result.id, result);

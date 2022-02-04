@@ -1,7 +1,7 @@
 .HomeNavBar {
     color: white;
-    background: rgb(38, 70, 83);
-    background: linear-gradient(90deg, #845EC2, #d65db1, #FF6F91) !important;
+    background: rgb(0, 255, 175) !important;
+    background: linear-gradient(90deg, rgba(0, 255, 175, 1) 0%, rgba(115, 0, 255, 1) 100%) !important;
 }
 
 .navbar-header {

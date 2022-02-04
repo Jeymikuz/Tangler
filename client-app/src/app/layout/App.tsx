@@ -13,6 +13,7 @@ import UserSettings from '../../features/dashboard/settings/usersSettings/UserSe
 import Statuses from '../../features/dashboard/statuses/Statuses';
 import HomePage from '../../features/home/HomePage';
 import UserLogin from '../../features/user/UserLogin';
+import UserRegistration from '../../features/user/UserRegistration';
 import { useStore } from '../stores/store';
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
@@ -38,13 +39,14 @@ function App() {
     <>
       <ToastContainer position='bottom-right' hideProgressBar />
       <Route
-        exact path={['/', '/logowanie', '/kontakt', '/funkcje', '/pomoc', '/funkcje/manager-zamowien', '/funkcje/manager-produktow', '/intergracje']}
+        exact path={['/','/rejestracja', '/logowanie', '/kontakt', '/funkcje', '/pomoc', '/funkcje/manager-zamowien', '/funkcje/manager-produktow', '/intergracje']}
         render={() => (
           <>
             <HomeNavBar />
             <Container style={{ marginTop: '7em' }} >
               <Route exact path='/' component={HomePage} />
               <Route exact path='/logowanie' component={UserLogin} />
+              <Route exact path='/rejestracja' component={UserRegistration} />
             </Container>
           </>
         )}

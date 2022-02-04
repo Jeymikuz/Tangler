@@ -39,10 +39,6 @@ export default observer(function OrderInfoDelivery({ order }: Props) {
                             <List.Header>{order.firstName} {order.lastName}</List.Header>
                         </List.Item>
                         <List.Item>
-                            <List.Description style={descriptionStyle} > Firma </List.Description>
-                            <List.Header>Guardians of the Galaxy</List.Header>
-                        </List.Item>
-                        <List.Item>
                             <List.Description style={descriptionStyle} >Adres</List.Description>
                             {order.deliveryAddress && (
                                 <List.Header>{order.deliveryAddress.street}</List.Header>

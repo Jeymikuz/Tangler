@@ -6,6 +6,7 @@ import FSelectInput from "../../../app/common/form/FSelectInput";
 import FTextInput from "../../../app/common/form/FTextInput";
 import { Status } from "../../../app/models/status";
 import { useStore } from "../../../app/stores/store";
+import * as Yup from 'yup';
 
 interface Props{
     setOpen: (isOpen: boolean) => void;
@@ -33,20 +34,26 @@ export default observer(function StatusCreateForm({setOpen}:Props){
         groupId: 0
     }
 
+    const validationSchema = Yup.object({
+        groupId: Yup.number().moreThan(0),
+        status: Yup.object().shape({
+            name: Yup.string().required('Nazwa jest wymagana')
+        })
+    })
 
     return(
         <Formik
             initialValues={initialVal}
             onSubmit={(values, { setErrors }) => {
-         
                 ordersStore.createStatus(values.groupId,values.status).then(() =>
                     setOpen(false)
                 ).catch((errors) => {
                     setErrors(errors);
                     console.log(errors);
                 })
-            }
-            }
+            }}
+
+            validationSchema={validationSchema}
         >
             {({ handleSubmit, isSubmitting, errors }) => (
                 <Form className='ui form'
